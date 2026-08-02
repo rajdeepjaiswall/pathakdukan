@@ -1,0 +1,193 @@
+Fix the Product Page Media Display System to support dynamic aspect ratios, full-screen viewing, and an immersive media experience.
+
+---
+
+🎯 OBJECTIVE
+
+- Remove fixed aspect ratio constraints
+- Always display full image/video
+- Implement full-screen modal viewer
+- Support carousel + swipe gestures + navigation
+- Maintain premium mobile-first UX
+
+---
+
+🧩 PRODUCT PAGE IMAGE DISPLAY FIX
+
+❌ Current Problem:
+
+- Images are forced into a fixed container ratio
+- Cropping or letterboxing occurs
+- Feels like viewing inside a “window”
+
+---
+
+✅ Required Fix:
+
+1. Dynamic Aspect Ratio Rendering
+   
+   - Image container MUST adapt to actual media ratio
+   - DO NOT crop image
+   - DO NOT force fixed height
+
+2. Use:
+   
+   - "width: 100%"
+   - "height: auto"
+   - "object-fit: contain"
+
+3. Container should:
+   
+   - Expand naturally based on image ratio
+   - Maintain clean spacing in layout
+
+---
+
+🎞️ MULTIPLE MEDIA (CAROUSEL)
+
+If product has multiple media items:
+
+- Enable horizontal carousel
+- Each slide:
+  - Adapts to its OWN aspect ratio
+  - No forced uniform height
+
+---
+
+Carousel Behavior:
+
+- Swipe left/right (mobile)
+- Smooth snapping
+- Indicator dots (optional but preferred)
+- Supports:
+  - Images
+  - Videos
+
+---
+
+🔍 FULL SCREEN MEDIA VIEWER (VERY IMPORTANT)
+
+On clicking ANY image or video:
+
+Open a full-screen modal viewer
+
+---
+
+Modal Requirements:
+
+1. Full screen coverage
+2. Background:
+   - Blurred ("backdrop-blur")
+   - Slight dark overlay
+3. Feels like:
+   - In-app popup (NOT page navigation)
+
+---
+
+🖼️ FULL SCREEN IMAGE BEHAVIOR
+
+- Image should:
+  - Fit inside screen
+  - Maintain aspect ratio
+  - Use "object-fit: contain"
+
+---
+
+Controls:
+
+- ❌ Close button (top-right)
+- ⬅️ ➡️ Navigation buttons (left/right)
+- Swipe gesture support
+- Tap zones for next/prev (optional)
+
+---
+
+🎥 FULL SCREEN VIDEO BEHAVIOR
+
+When video is opened:
+
+1. Autoplay ON
+2. Muted by default
+
+---
+
+Controls:
+
+- ❌ Close button (top-right)
+- 🔊 Mute/Unmute button:
+  - Top-left OR bottom-right
+- ⬅️ ➡️ Navigation (if multiple media)
+- Swipe to change media
+
+---
+
+Video Rules:
+
+- Maintain aspect ratio
+- Do NOT crop
+- Use "object-fit: contain"
+- Pause video when:
+  - Modal closes
+  - User switches media
+
+---
+
+🧠 CAROUSEL INSIDE MODAL
+
+If multiple media exist:
+
+- Modal becomes slideshow
+- Supports:
+  - Swipe gestures
+  - Arrow navigation
+  - Indicator dots
+
+---
+
+📱 MOBILE UX PRIORITY
+
+- Smooth gestures (swipe, tap)
+- No lag
+- Proper touch targets
+- No accidental zoom issues
+
+---
+
+🎨 VISUAL EXPERIENCE
+
+- Background blur (important)
+- Slight dim overlay
+- Image/video appears as focus element
+- No hard edges or boxed feel
+
+---
+
+⚙️ EDGE CASE HANDLING
+
+- Portrait images → full vertical fit
+- Landscape images → full width fit
+- Mixed media → each adapts individually
+- Low resolution → center properly, no stretching
+
+---
+
+🚫 DO NOT CHANGE
+
+- Product data structure
+- Pricing / cart logic
+- Header / Navbar
+- Footer
+- Any other page or feature
+
+---
+
+🎯 FINAL RESULT
+
+- No more cropped media
+- Full immersive viewing experience
+- Smooth mobile interactions
+- Professional app-like feel
+
+---
+
+End of task.

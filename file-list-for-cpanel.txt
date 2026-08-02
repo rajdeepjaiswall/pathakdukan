@@ -1,0 +1,44 @@
+FILES TO DOWNLOAD AND UPLOAD FOR CPANEL DEPLOYMENT
+================================================
+
+MAIN APPLICATION FILES:
+- app.js ✓
+- package-cpanel.json (rename to package.json) ✓
+- .env.cpanel (rename to .env and configure) ✓
+- mysql-database-setup.sql ✓
+
+SERVER FILES (upload entire server/ folder):
+- server/index-cpanel.ts ✓
+- server/routes-mysql.ts ✓
+- server/storage-mysql.ts ✓
+- server/db-cpanel.ts ✓
+- server/vite.ts ✓
+
+CLIENT FILES (upload entire client/ folder):
+- client/index.html ✓
+- client/src/ (all React components) ✓
+
+SHARED FILES (upload entire shared/ folder):
+- shared/schema.ts ✓
+- shared/schema-mysql.ts ✓
+
+ASSETS:
+- attached_assets/ (entire folder) ✓
+
+CONFIGURATION FILES:
+- tailwind.config.ts ✓
+- tsconfig.json ✓
+- postcss.config.js ✓
+- drizzle-cpanel.config.ts ✓
+- components.json ✓
+
+OPTIONAL (can regenerate on server):
+- node_modules/ (or run npm install)
+
+DO NOT UPLOAD:
+- .git/
+- .env (development version)
+- dist/
+- drizzle/ (PostgreSQL migrations)
+
+TOTAL SIZE: Approximately 50-100MB depending on node_modules

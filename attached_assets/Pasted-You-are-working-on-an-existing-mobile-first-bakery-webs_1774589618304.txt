@@ -1,0 +1,312 @@
+You are working on an existing mobile-first bakery website called "Pathak Bhandar".
+
+Your task is to create a **Dynamic Fresh Products Section** that highlights newly added products in an engaging and premium way.
+
+IMPORTANT:
+Do not modify existing hero, categories, or featured section.
+Only insert this new section.
+
+--------------------------------
+
+SECTION PLACEMENT
+
+Place this section:
+
+Below Categories Section  
+Above Featured Products Section  
+
+Final Order:
+
+Hero  
+Categories  
+Dynamic Fresh Section (NEW)  
+Featured Products  
+
+--------------------------------
+
+SECTION NAME (Dynamic Changing Title)
+
+Instead of "New Arrivals", create a **dynamic changing title**.
+
+The title should rotate every 3–5 seconds.
+
+Title Variations:
+
+Straight From The Oven  
+Fresh From The Kitchen  
+Just Baked Today  
+Hot From The Bakery  
+Freshly Made For You  
+Right Out Of Oven  
+Chef's Fresh Picks  
+Today's Fresh Batch  
+
+Animation:
+
+Fade transition between titles
+
+Smooth text transition
+
+--------------------------------
+
+SECTION DESIGN
+
+This section should visually stand out.
+
+Background:
+
+Soft warm gradient
+
+Example:
+
+bg-gradient-to-r from-[#fff7ed] to-[#fef3c7]
+
+Container:
+
+rounded-[2.5rem]  
+shadow-lg  
+px-6  
+py-8  
+
+--------------------------------
+
+HEADER LAYOUT
+
+Left:
+
+Dynamic Changing Title
+
+Typography:
+
+text-2xl  
+font-black  
+
+Right:
+
+Arrow Controls
+
+Left arrow  
+Right arrow
+
+Rounded circular buttons
+
+--------------------------------
+
+CAROUSEL DESIGN
+
+Horizontal carousel
+
+Scrollable
+
+Auto scrolling enabled
+
+Scroll behavior:
+
+Auto scroll every 4 seconds
+
+Pause on hover
+
+--------------------------------
+
+CARD DESIGN
+
+Square card
+
+Rounded:
+
+rounded-3xl
+
+Shadow:
+
+shadow-md
+
+--------------------------------
+
+CARD STRUCTURE
+
+Top:
+
+Rectangular image
+
+rounded-2xl
+
+--------------------------------
+
+NEW BADGE
+
+Top left of image
+
+Badge:
+
+NEW
+
+Rounded pill
+
+Primary color
+
+--------------------------------
+
+CARD CONTENT
+
+Below image:
+
+Product Name
+
+Price
+
+--------------------------------
+
+INTERACTION
+
+No Add to Cart button
+
+Click card:
+
+Navigate to:
+
+/product/{product-id}
+
+--------------------------------
+
+AUTO SCROLL LOGIC
+
+Auto scroll:
+
+Every 4 seconds
+
+Smooth scroll
+
+Infinite loop
+
+--------------------------------
+
+ANIMATION
+
+Add:
+
+Subtle glow background
+
+Fade in animation
+
+Badge bounce animation
+
+--------------------------------
+
+BACKEND IMPLEMENTATION
+
+Use existing product database
+
+Fetch:
+
+Latest products
+
+--------------------------------
+
+DATABASE REQUIREMENT
+
+Use:
+
+createdAt timestamp
+
+--------------------------------
+
+FETCH QUERY
+
+Fetch:
+
+isLive = true
+
+Sort:
+
+createdAt DESC
+
+Limit:
+
+10 products
+
+--------------------------------
+
+DATA STRUCTURE
+
+Product:
+
+{
+id
+name
+image
+price
+createdAt
+isLive
+}
+
+--------------------------------
+
+RESPONSIVE BEHAVIOR
+
+Mobile:
+
+2 cards visible
+
+Tablet:
+
+3 cards
+
+Desktop:
+
+4 cards
+
+--------------------------------
+
+CAROUSEL NAVIGATION
+
+Arrow click:
+
+Scroll group of cards
+
+Smooth transition
+
+--------------------------------
+
+PERFORMANCE
+
+Lazy load images
+
+Use:
+
+loading="lazy"
+
+--------------------------------
+
+FINAL USER EXPERIENCE
+
+User opens homepage
+
+↓
+
+Dynamic title changes
+
+↓
+
+New products visible immediately
+
+↓
+
+Auto scrolling begins
+
+↓
+
+User clicks product
+
+↓
+
+Navigates to product page
+
+--------------------------------
+
+FINAL RESULT
+
+Premium discovery section  
+Dynamic rotating title  
+Auto scroll carousel  
+Attention grabbing UI  
+Mobile optimized

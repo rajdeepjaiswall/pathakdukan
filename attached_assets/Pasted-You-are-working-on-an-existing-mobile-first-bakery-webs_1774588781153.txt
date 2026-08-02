@@ -1,0 +1,338 @@
+You are working on an existing mobile-first bakery website called "Pathak Bhandar".
+
+Your task is to create a **Trending Local Section** styled like a **Pinterest board**.
+
+IMPORTANT DESIGN GOALS
+
+- Pinterest style masonry grid
+- Dark brown background
+- Beige product cards
+- Organic card heights
+- Smooth scrolling
+- Premium editorial feel
+- Mobile-first responsive layout
+
+--------------------------------
+
+SECTION: TRENDING LOCAL (HOME PAGE)
+
+BACKGROUND
+
+Use:
+
+Dark chocolate brown background
+
+Color:
+
+#3E2723
+
+Tailwind:
+
+bg-chocolate-dark
+
+Add:
+
+Rounded top container  
+Rounded bottom container  
+Soft shadow separation
+
+Container Style:
+
+rounded-[3rem]  
+py-16  
+px-6  
+shadow-2xl  
+
+--------------------------------
+
+SECTION HEADER
+
+Top Left:
+
+Small badge:
+
+TOP PICKS
+
+Style:
+
+Beige background  
+Rounded pill  
+Small uppercase
+
+Below:
+
+Large Title:
+
+Trending Local
+
+Typography:
+
+text-3xl  
+font-black  
+text-white  
+
+Top Right:
+
+Explore All button
+
+Style:
+
+Small text  
+Underline  
+Beige color
+
+--------------------------------
+
+PINTEREST MASONRY GRID
+
+Use:
+
+Two column masonry grid
+
+Mobile:
+
+column-count: 2  
+gap: 16px  
+
+Cards must have:
+
+Different heights  
+Organic layout  
+Pinterest style
+
+--------------------------------
+
+CARD STYLE
+
+Background:
+
+Beige
+
+Color:
+
+#F5EFE6
+
+Tailwind:
+
+bg-surface-container-low
+
+Card:
+
+Rounded corners
+
+rounded-3xl
+
+Shadow:
+
+shadow-md
+
+--------------------------------
+
+CARD STRUCTURE
+
+Top:
+
+Product Image
+
+Rounded corners
+
+rounded-2xl
+
+Below:
+
+Product Name
+
+Price
+
+Circular Add Button
+
+--------------------------------
+
+BADGES
+
+Top Left badges:
+
+BEST SELLER  
+MUST TRY  
+TRENDING  
+
+Style:
+
+Rounded pill  
+Small text  
+Soft beige background
+
+--------------------------------
+
+HOVER / INTERACTION
+
+Hover:
+
+Scale slightly
+
+hover:scale-[1.02]
+
+Add:
+
+Soft shadow increase
+
+--------------------------------
+
+EXPLORE ALL BUTTON BEHAVIOR
+
+When user clicks:
+
+"Explore All"
+
+Navigate to:
+
+/trending-local
+
+--------------------------------
+
+TRENDING LOCAL FULL PAGE
+
+Create new page:
+
+Trending Local Page
+
+Background:
+
+Same dark brown
+
+bg-chocolate-dark
+
+--------------------------------
+
+FULL PAGE PINTEREST LAYOUT
+
+Use:
+
+3 column masonry
+
+Desktop
+
+2 column mobile
+
+--------------------------------
+
+CARD INTERACTION
+
+When user clicks card:
+
+Open modal
+
+Pinterest style
+
+--------------------------------
+
+MODAL DESIGN
+
+Full screen modal
+
+Large image
+
+Below:
+
+Product name
+
+Description
+
+Price
+
+Add to cart button
+
+--------------------------------
+
+MODAL STYLE
+
+Background:
+
+Soft beige
+
+Rounded top
+
+Slide up animation
+
+--------------------------------
+
+BACKEND IMPLEMENTATION
+
+Admin Dashboard
+
+Add Checkbox:
+
+[ ] Trending Local
+
+Database:
+
+isTrendingLocal: boolean
+
+--------------------------------
+
+FETCH LOGIC
+
+Homepage:
+
+fetch:
+
+isTrendingLocal = true  
+limit: 6
+
+--------------------------------
+
+Trending Page:
+
+fetch:
+
+isTrendingLocal = true  
+limit: unlimited
+
+--------------------------------
+
+CARD DATA STRUCTURE
+
+Product:
+
+{
+id
+name
+image
+price
+isTrendingLocal
+category
+}
+
+--------------------------------
+
+PERFORMANCE
+
+Lazy load images
+
+Use:
+
+Intersection observer
+
+--------------------------------
+
+ANIMATION
+
+Cards fade in
+
+stagger animation
+
+--------------------------------
+
+FINAL RESULT
+
+Pinterest-style bakery trending board
+
+Dark premium background
+
+Beige editorial cards
+
+Smooth Pinterest expand page
+
+Mobile optimized
+
+Maintain brand consistency

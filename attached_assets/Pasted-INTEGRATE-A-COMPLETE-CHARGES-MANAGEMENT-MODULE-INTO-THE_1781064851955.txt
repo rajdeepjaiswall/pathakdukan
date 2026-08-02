@@ -1,0 +1,770 @@
+INTEGRATE A COMPLETE CHARGES MANAGEMENT MODULE INTO THE EXISTING ECOMMERCE STORE.
+
+IMPORTANT:
+- Do NOT modify existing cart logic.
+- Do NOT modify coupon logic.
+- Do NOT modify tax logic.
+- Do NOT modify payment logic.
+- Do NOT modify order placement logic.
+- Do NOT modify inventory logic.
+- Add charges as a separate layer on top of the existing cart calculation.
+
+==================================================
+ADMIN DASHBOARD
+==================================================
+
+Create a new dashboard card:
+
+Title: Charges
+Icon: Receipt / Calculator / Charges
+
+When opened, show two independent sections:
+
+1. Delivery Charges
+2. Handling Charges
+
+Both sections must work independently.
+
+==================================================
+DELIVERY CHARGES SECTION
+==================================================
+
+MASTER SWITCH
+
+Delivery Charges [ON/OFF]
+
+If OFF:
+- Delivery charges completely disabled.
+- No delivery charges calculated.
+- No delivery charge row shown in cart.
+- No delivery charge row shown in checkout.
+- No delivery charge row shown in order summary.
+
+If ON:
+- Delivery charge logic becomes active.
+
+--------------------------------------------------
+
+FREE DELIVERY THRESHOLD
+
+Toggle:
+Enable Free Delivery Threshold [ON/OFF]
+
+Input:
+Free Delivery Above Amount (₹)
+
+Example:
+₹350
+
+Logic:
+
+If cart subtotal >= threshold amount
+
+Delivery Charge = ₹0
+
+Display:
+
+Delivery: FREE
+
+--------------------------------------------------
+
+CHARGE TYPE
+
+Only ONE option can be selected.
+
+Radio Style:
+
+( ) Percentage Charge
+( ) Fixed Charge
+
+Mutually Exclusive.
+
+Selecting one automatically deselects the other.
+
+--------------------------------------------------
+
+PERCENTAGE CHARGE
+
+Visible only when Percentage Charge is selected.
+
+Input:
+
+Percentage %
+
+Example:
+
+5%
+
+Calculation:
+
+deliveryCharge =
+(cartSubtotal × percentage) / 100
+
+Example:
+
+Cart ₹200
+Percentage 5%
+
+Delivery = ₹10
+
+--------------------------------------------------
+
+FIXED CHARGE
+
+Visible only when Fixed Charge is selected.
+
+Input:
+
+Fixed Delivery Charge
+
+Example:
+
+₹50
+
+Calculation:
+
+deliveryCharge = fixedAmount
+
+==================================================
+HANDLING CHARGES SECTION
+==================================================
+
+MASTER SWITCH
+
+Handling Charges [ON/OFF]
+
+If OFF:
+- Handling charges disabled.
+- No handling charge row visible.
+- No handling charge calculation.
+
+If ON:
+- Handling charge logic active.
+
+--------------------------------------------------
+
+FREE HANDLING THRESHOLD
+
+Toggle:
+
+Enable Free Handling Threshold [ON/OFF]
+
+Input:
+
+Free Handling Above Amount (₹)
+
+Example:
+
+₹350
+
+Logic:
+
+If cart subtotal >= threshold
+
+Handling Charge = ₹0
+
+Display:
+
+Handling: FREE
+
+--------------------------------------------------
+
+CHARGE TYPE
+
+Only ONE option can be selected.
+
+Radio Style:
+
+( ) Percentage Charge
+( ) Fixed Charge
+
+Mutually Exclusive.
+
+--------------------------------------------------
+
+PERCENTAGE CHARGE
+
+Visible only when selected.
+
+Input:
+
+Percentage %
+
+Example:
+
+3%
+
+Calculation:
+
+handlingCharge =
+(cartSubtotal × percentage) / 100
+
+--------------------------------------------------
+
+FIXED CHARGE
+
+Visible only when selected.
+
+Input:
+
+Fixed Handling Charge
+
+Example:
+
+₹20
+
+Calculation:
+
+handlingCharge = fixedAmount
+
+==================================================
+CHECKOUT CALCULATION FLOW
+==================================================
+
+STEP 1
+
+Calculate Cart Subtotal normally.
+
+Do NOT modify existing subtotal logic.
+
+--------------------------------------------------
+
+STEP 2
+
+Calculate Delivery Charge
+
+IF Delivery Charges OFF
+
+deliveryCharge = 0
+
+ELSE
+
+IF Free Delivery Threshold Enabled
+AND subtotal >= threshold
+
+deliveryCharge = 0
+
+ELSE
+
+Apply selected charge mode:
+
+Percentage
+OR
+Fixed
+
+--------------------------------------------------
+
+STEP 3
+
+Calculate Handling Charge
+
+IF Handling Charges OFF
+
+handlingCharge = 0
+
+ELSE
+
+IF Free Handling Threshold Enabled
+AND subtotal >= threshold
+
+handlingCharge = 0
+
+ELSE
+
+Apply selected charge mode:
+
+Percentage
+OR
+Fixed
+
+--------------------------------------------------
+
+STEP 4
+
+Grand Total
+
+grandTotal =
+subtotal
++ deliveryCharge
++ handlingCharge
++ existing taxes
+- existing discounts
+
+==================================================
+CART DISPLAY
+==================================================
+
+Example:
+
+Subtotal                 ₹200
+
+Delivery Charge          ₹10
+
+Handling Charge          ₹20
+
+Total                    ₹230
+
+--------------------------------------------------
+
+If free:
+
+Subtotal                 ₹500
+
+Delivery                 FREE
+
+Handling                 FREE
+
+Total                    ₹500
+
+--------------------------------------------------
+
+If Delivery OFF
+
+Subtotal                 ₹200
+
+Handling Charge          ₹20
+
+Total                    ₹220
+
+--------------------------------------------------
+
+If Handling OFF
+
+Subtotal                 ₹200
+
+Delivery Charge          ₹10
+
+Total                    ₹210
+
+==================================================
+ORDER DETAILS PAGE
+==================================================
+
+Store separately:
+
+Subtotal
+
+Delivery Charge
+
+Handling Charge
+
+Discount
+
+Tax
+
+Grand Total
+
+==================================================
+DATABASE
+==================================================
+
+Create a new table:
+
+charges_settings
+
+Fields:
+
+{
+  id,
+  deliveryEnabled,
+  deliveryFreeThresholdEnabled,
+  deliveryFreeThreshold,
+  deliveryChargeType,
+  deliveryPercentage,
+  deliveryFixedCharge,
+
+  handlingEnabled,
+  handlingFreeThresholdEnabled,
+  handlingFreeThreshold,
+  handlingChargeType,
+  handlingPercentage,
+  handlingFixedCharge,
+
+  updatedAt
+}
+
+--------------------------------------------------
+
+deliveryChargeType:
+
+"percentage"
+"fixed"
+
+--------------------------------------------------
+
+handlingChargeType:
+
+"percentage"
+"fixed"
+
+==================================================
+API
+==================================================
+
+GET
+
+/api/admin/charges
+
+POST
+
+/api/admin/charges
+
+==================================================
+UI DESIGN REQUIREMENTS
+==================================================
+
+Match existing Pathak Bhandar admin style.
+
+Use:
+
+- Beige cards
+- Gold accent color
+- Rounded corners
+- Mobile responsive layout
+- Same spacing and typography as existing admin dashboard
+
+Structure:
+
+Charges
+ ├── Delivery Charges
+ │    ├── Master Toggle
+ │    ├── Free Threshold
+ │    ├── Percentage Option
+ │    └── Fixed Option
+ │
+ └── Handling Charges
+      ├── Master Toggle
+      ├── Free Threshold
+      ├── Percentage Option
+      └── Fixed Option
+
+==================================================
+VALIDATION RULES
+==================================================
+
+- Percentage and Fixed can never be active together.
+- Delivery and Handling can both be active simultaneously.
+- Free Threshold amount cannot be negative.
+- Percentage cannot exceed 100.
+- Fixed charge cannot be negative.
+- If Master Toggle is OFF, hide all calculations from customer.
+- Preserve all existing store functionality.
+==================================================
+CART POPUP / MINI CART INTEGRATION
+==================================================
+
+IMPORTANT:
+
+The store already contains an Add To Cart popup.
+
+Current popup contains:
+
+- Product Image
+- Product Name
+- Cart Total
+- Progress Bar
+- "Add ₹X More For Free Delivery" message
+
+DO NOT REMOVE THIS FUNCTIONALITY.
+
+Instead, dynamically connect it to the Delivery Charges settings.
+
+==================================================
+FREE DELIVERY PROGRESS LOGIC
+==================================================
+
+The popup currently displays:
+
+"Add ₹238 More For Free Delivery"
+
+This value must NO LONGER be hardcoded.
+
+It must be calculated from the Delivery Charges settings.
+
+--------------------------------------------------
+
+IF Delivery Charges OFF
+
+Hide:
+
+- Free Delivery Progress Bar
+- Free Delivery Message
+
+Reason:
+
+No delivery system exists.
+
+--------------------------------------------------
+
+IF Delivery Charges ON
+AND Free Delivery Threshold Enabled
+
+Show:
+
+Progress Bar
+
+AND
+
+Add ₹X More For Free Delivery
+
+Where:
+
+remainingAmount =
+deliveryFreeThreshold - cartSubtotal
+
+Example:
+
+Threshold = ₹500
+
+Cart = ₹262
+
+Remaining = ₹238
+
+Display:
+
+Add ₹238 More For Free Delivery
+
+--------------------------------------------------
+
+IF cartSubtotal >= threshold
+
+Display:
+
+🎉 Congratulations!
+You have unlocked FREE Delivery.
+
+Progress Bar = 100%
+
+--------------------------------------------------
+
+IF threshold feature disabled
+
+Hide:
+
+- Progress Bar
+- Free Delivery Message
+
+==================================================
+PROGRESS BAR CALCULATION
+==================================================
+
+progressPercentage =
+(cartSubtotal / threshold) × 100
+
+Limit maximum value to 100%.
+
+Examples:
+
+Threshold ₹500
+
+Cart ₹250
+
+Progress = 50%
+
+--------------------------------------------------
+
+Threshold ₹500
+
+Cart ₹400
+
+Progress = 80%
+
+--------------------------------------------------
+
+Threshold ₹500
+
+Cart ₹600
+
+Progress = 100%
+
+==================================================
+CART POPUP TOTALS
+==================================================
+
+The popup currently shows:
+
+Cart Total ₹XXX
+
+Update this value to reflect:
+
+Subtotal
++ Delivery Charge
++ Handling Charge
+
+according to configured settings.
+
+--------------------------------------------------
+
+Example
+
+Cart Subtotal = ₹200
+
+Delivery = ₹10
+
+Handling = ₹20
+
+Popup Cart Total = ₹230
+
+--------------------------------------------------
+
+Example
+
+Cart Subtotal = ₹500
+
+Delivery = FREE
+
+Handling = FREE
+
+Popup Cart Total = ₹500
+
+==================================================
+MINI CART / CART DRAWER
+==================================================
+
+If a mini-cart exists:
+
+Display:
+
+Subtotal
+
+Delivery Charge
+
+Handling Charge
+
+Grand Total
+
+Example:
+
+Subtotal            ₹200
+
+Delivery            ₹10
+
+Handling            ₹20
+
+Total               ₹230
+
+==================================================
+CART PAGE
+==================================================
+
+Display charges separately.
+
+Structure:
+
+Subtotal
+
+Delivery Charge
+
+Handling Charge
+
+Tax
+
+Discount
+
+Grand Total
+
+==================================================
+CHECKOUT PAGE
+==================================================
+
+Display charges separately.
+
+Structure:
+
+Subtotal
+
+Delivery Charge
+
+Handling Charge
+
+Tax
+
+Discount
+
+Grand Total
+
+==================================================
+ORDER CONFIRMATION PAGE
+==================================================
+
+Display:
+
+Subtotal
+
+Delivery Charge
+
+Handling Charge
+
+Grand Total
+
+==================================================
+ORDER DATABASE STORAGE
+==================================================
+
+Store the following in every order:
+
+{
+  subtotal,
+  deliveryCharge,
+  handlingCharge,
+  tax,
+  discount,
+  grandTotal
+}
+
+These values must be stored permanently and remain unchanged even if admin changes charge settings later.
+
+==================================================
+REAL-TIME ADMIN SYNCHRONIZATION
+==================================================
+
+Whenever admin changes:
+
+- Delivery Threshold
+- Delivery Percentage
+- Delivery Fixed Charge
+- Handling Percentage
+- Handling Fixed Charge
+- Delivery ON/OFF
+- Handling ON/OFF
+
+The following must update automatically:
+
+✓ Add To Cart Popup
+✓ Free Delivery Message
+✓ Progress Bar
+✓ Mini Cart
+✓ Cart Page
+✓ Checkout Page
+✓ Order Summary
+
+No manual refresh or code changes required.
+
+==================================================
+CUSTOMER EXPERIENCE RULES
+==================================================
+
+Delivery Charges OFF
+→ Hide Free Delivery Progress System completely.
+
+Delivery Charges ON
+→ Show Free Delivery Progress System.
+
+Threshold Reached
+→ Show FREE Delivery unlocked message.
+
+Threshold Not Reached
+→ Show remaining amount required.
+
+Handling Charges should NEVER affect the
+"Add ₹X More For Free Delivery" calculation.
+
+The free delivery progress bar must ONLY use:
+
+deliveryFreeThreshold
+
+and
+
+cartSubtotal
+
+Handling Charges must be calculated separately.

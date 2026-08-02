@@ -1,0 +1,109 @@
+⚠ THIS IS A TEST — READ CAREFULLY BEFORE DOING ANYTHING
+
+The owner login system and product management system
+are already built and working perfectly.
+DO NOT touch, rebuild, or modify any of that.
+DO NOT change any existing routes, pages, or logic.
+
+The only thing I want to change is this:
+Right now when the owner adds a product, the image
+and video are being stored in the database.
+I want them to go to Cloudflare R2 CDN instead,
+and only the CDN URL should be saved in the database.
+
+════════════════════════════════════════
+WHAT TO CHANGE — AND ONLY THIS
+════════════════════════════════════════
+
+Find the existing product upload route where the
+owner submits a new product with image and video.
+
+Change ONLY the file handling part:
+
+  BEFORE (current):
+  → Image and video saved into the database as binary/blob
+
+  AFTER (what I want):
+  → Image uploaded to Cloudflare R2 CDN
+    saved in folder: /products/images/
+    filename: Date.now() + original filename
+  → Video uploaded to Cloudflare R2 CDN
+    saved in folder: /products/videos/
+    filename: Date.now() + original filename
+  → Only the returned public CDN URL string
+    is saved in the database
+  → Everything else in the route stays exactly the same
+
+════════════════════════════════════════
+R2 CREDENTIALS
+════════════════════════════════════════
+
+All credentials are already in Replit Secrets.
+Use only these — never hardcode values:
+
+process.env.R2_ENDPOINT
+process.env.R2_ACCESS_KEY_ID
+process.env.R2_SECRET_ACCESS_KEY
+process.env.R2_BUCKET_NAME
+process.env.R2_PUBLIC_URL
+
+Install these packages if not already installed:
+- @aws-sdk/client-s3
+- @aws-sdk/lib-storage
+- multer-s3
+
+════════════════════════════════════════
+BACKUP REQUIREMENT — VERY IMPORTANT
+════════════════════════════════════════
+
+Before making any changes, do the following:
+
+1. Find the current upload code that saves files
+   to the database
+
+2. Copy that entire section and save it as a comment
+   block directly above the new CDN code like this:
+
+   /* ORIGINAL CODE - DO NOT DELETE
+   [paste original code here]
+   */
+
+   This way if I say "remove CDN and go back to normal"
+   you can instantly restore the original code by
+   removing the new CDN code and uncommenting this block.
+
+════════════════════════════════════════
+FILE VALIDATION — KEEP THE SAME
+════════════════════════════════════════
+
+Keep whatever file validation already exists.
+If there is none, add these rules:
+
+- Images: jpg, jpeg, png, webp only — max 10MB
+- Videos: mp4, mov, webm only — max 100MB
+- Reject anything else with a clear error message
+
+════════════════════════════════════════
+VERIFY AFTER CHANGE
+════════════════════════════════════════
+
+After making the change, confirm:
+
+✓ Owner can still log in normally
+✓ Owner can add a product with image and video
+✓ Image appears inside R2 bucket under /products/images/
+✓ Video appears inside R2 bucket under /products/videos/
+✓ Database saves only the URL string, not binary data
+✓ Product image and video display correctly on the website
+✓ No existing feature is broken
+
+════════════════════════════════════════
+HOW TO ROLL BACK IF I SAY REMOVE CDN
+════════════════════════════════════════
+
+If I later say "remove CDN" or "go back to normal":
+- Delete the new R2 upload code
+- Restore the original code from the comment block
+- The app goes back to exactly how it was before
+- Nothing else changes
+⚡ Test Mode — Reversible

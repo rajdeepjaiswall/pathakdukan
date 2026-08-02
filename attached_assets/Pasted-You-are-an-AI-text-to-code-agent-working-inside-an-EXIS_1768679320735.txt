@@ -1,0 +1,100 @@
+You are an AI text-to-code agent working inside an EXISTING order notification system.
+
+========================
+CRITICAL CHANGE (READ CAREFULLY)
+========================
+- For the "ORDER OUT FOR DELIVERY" event:
+  ❌ DO NOT send SMS
+  ✅ SEND ONLY WhatsApp message
+
+This rule applies ONLY to this specific order-status notification.
+All other SMS flows in the system MUST remain unchanged.
+
+========================
+STRICT DO-NOT-CHANGE RULES
+========================
+- Order creation logic is already working.
+- Order status update logic is already working.
+- Customer mobile number already exists.
+- DO NOT modify order lifecycle logic.
+- DO NOT refactor existing code.
+- DO NOT affect OTP or other SMS notifications.
+- ONLY change delivery channel for THIS message.
+
+========================
+WHATSAPP KEY & API HANDLING
+========================
+- WhatsApp API key is ALREADY available in Replit Secrets.
+- Use ONLY the WhatsApp API key.
+- DO NOT use SMS API key.
+- DO NOT hardcode keys.
+
+========================
+WHATSAPP TEMPLATE DETAILS
+========================
+
+Template ID:
+9781
+
+Template Name:
+orderstatus
+
+HEADER:
+Pathak bhandar team
+
+BODY:
+Namaste🙏 {Var1},
+Thank you for your order {Var2} is out for dilivery track you orders here
+https://pathakbhandar.in/customer/orders
+make sure you login with your own name
+Thank you
+
+FOOTER:
+managed by getdown fitness
+
+========================
+VARIABLE MAPPING (MANDATORY)
+========================
+- Var1 → customer.name
+- Var2 → order.id OR order.reference
+  (use the SAME value already available in the system)
+
+⚠️ Do NOT create new variables.
+
+========================
+API INTEGRATION (USE AS-IS)
+========================
+
+API URL:
+https://www.fast2sms.com/dev/whatsapp
+
+REQUEST TYPE:
+GET request with query parameters
+
+FULL REQUEST FORMAT:
+https://www.fast2sms.com/dev/whatsapp
+?authorization=<WHATSAPP_API_KEY_FROM_REPLIT_SECRETS>
+&message_id=9781
+&phone_number_id=979454055241619
+&numbers=<MOBILE_NUMBER>
+&variables_values=Var1|Var2
+
+========================
+IMPLEMENTATION INSTRUCTIONS
+========================
+- Locate the existing "Out for delivery" notification trigger.
+- DISABLE or BYPASS SMS sending ONLY for this event.
+- Invoke WhatsApp API instead.
+- Variable order MUST be:
+  Var1 | Var2
+- Do NOT add retries or fallback SMS.
+- Do NOT change message content or spelling.
+
+========================
+EXPECTED RESULT
+========================
+- Customer receives ONLY WhatsApp message.
+- No SMS is sent for this order-status event.
+- All other notifications remain untouched.
+
+If any other SMS or OTP flow is impacted, ABORT implementation.

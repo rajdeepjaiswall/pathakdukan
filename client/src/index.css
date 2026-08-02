@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 33 25% 91%; /* #E6C7A6 - Toasted Almond */
+  --foreground: 215 25% 20%; /* #2B2E3C */
+  --muted: 33 25% 91%; /* #E6C7A6 */
+  --muted-foreground: 215 15% 45%;
+  --popover: 42 16% 97%; /* #FCE8D5 */
+  --popover-foreground: 215 25% 20%; /* #2B2E3C */
+  --card: 0 0% 100%;
+  --card-foreground: 215 25% 20%; /* #2B2E3C */
+  --border: 33 25% 91%; /* #E6C7A6 */
+  --input: 33 25% 91%; /* #E6C7A6 */
+  --primary: 41 31% 68%; /* #D4B483 */
+  --primary-foreground: 215 25% 20%; /* #2B2E3C */
+  --secondary: 33 25% 91%; /* #E6C7A6 */
+  --secondary-foreground: 215 25% 20%; /* #2B2E3C */
+  --accent: 33 25% 91%; /* #E6C7A6 */
+  --accent-foreground: 215 25% 20%; /* #2B2E3C */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 60 9% 98%;
+  --ring: 41 31% 68%; /* #D4B483 */
+  --radius: 0.5rem;
+  
+  /* Custom Pathak Bakers colors */
+  --cream: 42 16% 97%; /* #FCE8D5 */
+  --almond: 33 25% 91%; /* #E6C7A6 */
+  --champagne: 41 31% 68%; /* #D4B483 */
+  --navy: 215 25% 20%; /* #2B2E3C */
+}
+
+.dark {
+  --background: 215 25% 20%; /* #2B2E3C */
+  --foreground: 42 16% 97%; /* #FCE8D5 */
+  --muted: 215 20% 25%;
+  --muted-foreground: 42 10% 70%;
+  --popover: 215 25% 20%; /* #2B2E3C */
+  --popover-foreground: 42 16% 97%; /* #FCE8D5 */
+  --card: 215 25% 20%; /* #2B2E3C */
+  --card-foreground: 42 16% 97%; /* #FCE8D5 */
+  --border: 215 20% 25%;
+  --input: 215 20% 25%;
+  --primary: 41 31% 68%; /* #D4B483 */
+  --primary-foreground: 215 25% 20%; /* #2B2E3C */
+  --secondary: 215 20% 25%;
+  --secondary-foreground: 42 16% 97%; /* #FCE8D5 */
+  --accent: 215 20% 25%;
+  --accent-foreground: 42 16% 97%; /* #FCE8D5 */
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 41 31% 68%; /* #D4B483 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bakery-pattern {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="bakery" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="%23D4B483" opacity="0.1"/><path d="M15 10c0-2 1-3 2-3s2 1 2 3-1 3-2 3-2-1-2-3z" fill="%23E6C7A6" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23bakery)"/></svg>');
+  }
+  
+  /* Logo pulse animation - subtle scaling every 2 seconds */
+  @keyframes pulse-logo {
+    0%, 90%, 100% {
+      transform: scale(1);
+    }
+    5% {
+      transform: scale(1.1);
+    }
+    10% {
+      transform: scale(1);
+    }
+  }
+  
+  .animate-pulse-logo {
+    animation: pulse-logo 2s ease-in-out infinite;
+  }
+  
+  .gradient-overlay {
+    background: linear-gradient(135deg, rgba(252,232,213,0.9) 0%, rgba(230,199,166,0.8) 100%);
+  }
+  
+  .text-cream {
+    color: hsl(var(--cream));
+  }
+  
+  .text-almond {
+    color: hsl(var(--almond));
+  }
+  
+  .text-champagne {
+    color: hsl(var(--champagne));
+  }
+  
+  .text-navy {
+    color: hsl(var(--navy));
+  }
+  
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+  
+  .bg-almond {
+    background-color: hsl(var(--almond));
+  }
+  
+  .bg-champagne {
+    background-color: hsl(var(--champagne));
+  }
+  
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+  
+  .border-cream {
+    border-color: hsl(var(--cream));
+  }
+  
+  .border-almond {
+    border-color: hsl(var(--almond));
+  }
+  
+  .border-champagne {
+    border-color: hsl(var(--champagne));
+  }
+  
+  .border-navy {
+    border-color: hsl(var(--navy));
+  }
+
+  /* Infinite Scroll Animation */
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+  
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* iOS Shimmer Animation */
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}

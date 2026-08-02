@@ -1,0 +1,19 @@
+uploads = []
+
+[[generated]]
+id = "RWeSEQkWbzHPloDua9m4O"
+uri = "file://attached_assets/tea_product.png"
+type = "image"
+title = "masala chai tea product"
+
+[[generated]]
+id = "Rqdj7Dwjsbe2LUKh1Mnbr"
+uri = "file://attached_assets/coffee_product.png"
+type = "image"
+title = "black coffee product"
+
+[[outputs]]
+id = "I3AhJSW9xM9-rijDJtmTn"
+uri = "file://attached_assets/generated_videos/pathak-bhandar-ecommerce-showcase.mp4"
+type = "video"
+title = "Pathak Bhandar E-Commerce Showcase Video"

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#d8c2bd",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4209",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fff8f4",
+                    "background": "#fff8f4",
+                    "surface-container-high": "#efe7e1",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#e0d9d3",
+                    "inverse-surface": "#34302c",
+                    "outline": "#86736f",
+                    "on-primary-container": "#e2927f",
+                    "on-background": "#1e1b18",
+                    "inverse-on-surface": "#f8efea",
+                    "secondary-container": "#fe915e",
+                    "surface-container": "#f5ece7",
+                    "primary": "#47160b",
+                    "on-secondary-fixed-variant": "#7c2e01",
+                    "tertiary-fixed-dim": "#e9c17d",
+                    "secondary-fixed-dim": "#ffb595",
+                    "on-tertiary-fixed": "#271900",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#c6a161",
+                    "on-surface": "#1e1b18",
+                    "on-secondary-fixed": "#360f00",
+                    "surface-tint": "#8d4c3d",
+                    "tertiary-fixed-dim": "#e9c17d",
+                    "secondary": "#9b4518",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#390b03",
+                    "on-primary-fixed-variant": "#713628",
+                    "surface-variant": "#e9e1dc",
+                    "on-secondary-container": "#732a00",
+                    "primary-container": "#632b1e",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#fbf2ec",
+                    "tertiary": "#352300",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-container-highest": "#e9e1dc",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "secondary-fixed": "#ffdbcd",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdad2",
+                    "surface": "#fff8f4",
+                    "on-surface-variant": "#534340",
+                    "tertiary-fixed": "#ffdeaa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Plus Jakarta Sans", "sans-serif"],
+                    "label": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            "animation": {
+                "ken-burns": "ken-burns 20s ease-in-out infinite alternate",
+                "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+                "ticker": "ticker 40s linear infinite",
+                "bubble-entrance": "bubble-entrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards",
+            },
+            "keyframes": {
+                "ken-burns": {
+                    "0%": { transform: "scale(1)" },
+                    "100%": { transform: "scale(1.15)" }
+                },
+                "fade-in-up": {
+                    "0%": { opacity: "0", transform: "translateY(20px)" },
+                    "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                "ticker": {
+                    "0%": { transform: "translateX(0)" },
+                    "100%": { transform: "translateX(-50%)" }
+                },
+                "bubble-entrance": {
+                    "0%": { opacity: "0", transform: "translateY(60px) scale(0.8)" },
+                    "100%": { opacity: "1", transform: "translateY(0) scale(1)" }
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .newsreader { font-family: 'Newsreader', serif; }
+
+        .carousel-slide {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Legacy Carousel Transitions */
+        .legacy-slide {
+            display: none;
+            animation: fade 1s ease-in-out;
+        }
+        .legacy-slide.active {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Bubble cluster utilities */
+        .bubble-container {
+            perspective: 1000px;
+        }
+        .bubble {
+            opacity: 0;
+        }
+        .bubble.visible {
+            animation: bubble-entrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 8s ease-in-out infinite -2s;
+        }
+        .animate-float-fast {
+            animation: float 5s ease-in-out infinite -1s;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TOP APP BAR -->
+<header class="bg-[#fff8f4]/80 dark:bg-[#1e1b18]/80 backdrop-blur-md fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#47160b] dark:text-[#ffdbcd]" data-icon="menu">menu</span>
+<span class="font-['Newsreader'] italic text-2xl text-[#47160b] dark:text-[#ffdbcd]">Pathak Bhandar</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#47160b] dark:text-[#ffdbcd] font-bold hover:opacity-100 transition-opacity" href="#">About</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] opacity-80 hover:opacity-100 transition-opacity" href="#">Bakery</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] opacity-80 hover:opacity-100 transition-opacity" href="#">Our Story</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] opacity-80 hover:opacity-100 transition-opacity" href="#">Contact</a>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="circular user profile avatar with a warm friendly illustration style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApCKoeEBG-2Foh8vQQFUIKcc8JniTVjRjP-ImoAgrfQZRiwtQeM0eJ4xmWl7OxiCWrGW_BtZWv7erSjivTvtbXspaJdVDj52EZBVSQ_T21KiW_og_SVmqIXc-hv9DD08g_N9MX6qQ_aSbWBi82PDXhSNEpxuNtjaT2rPODAn2akqzoqjeD_MrMzqEFqa29bCJdUzSK5MZKSZQVUTLaZCsi2gc3-5zw0DqFc6Asbm_D-13_0KbXgnjlhDKFFkHCkMy21dTytZRulUw"/>
+</div>
+</nav>
+</header>
+<main class="pt-0">
+<!-- SECTION 1: AUTO-PLAYING HERO CAROUSEL -->
+<section class="relative h-[90vh] md:h-[85vh] overflow-hidden">
+<!-- Carousel Backgrounds -->
+<div class="absolute inset-0 z-0">
+<div class="carousel-slide active">
+<img class="w-full h-full object-cover animate-ken-burns" data-alt="close up of rustic artisan bread with flour dusting on a warm wooden background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD1omkz38mS8mICSqgyU2fb6Tsb_YcDis_gFVDP9-_VQ4SFQO4hQZQZb_le188NCwDkyY-GSDdDrRzm_ouiAVD_D7dJc3juzVC_6uj618-wbSUOV6hLZgtuyePCRHoNllI-NU3ZzHSkN0QeIh6On7cZW3uVS-tnO3MijTinGlV3DBfI010arae2JL1otHaP9Dok_pLm54F_4ekE6iBGu8Yf-P-P5e8fnB94hUUexPBZpEawz_fucn8sg_JaREtI9K086d1BD3NT1M"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="carousel-slide">
+<img class="w-full h-full object-cover animate-ken-burns" data-alt="wide shot of a clean modern bakery kitchen with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxx7GWzHjwxMoeFscz8QFsk31hnK8Mv0groEcLeJZJptKCQj04k4-BMVQ7y0pKOS1n4oQ1DpwjLUIwaELz1Lhh_PMiKKFwMfYwkk_AWgCa2Py0XpejW1NmsaxNSgMAMjN9E09E4aYeLdv-kOvrKQFm9aKC05Ca7-JMrLLbgCPrrq_tD29N5ednMN-EHreUdvJ1VG845tr5MMR0lb0_iHaH7bF9QogD4Ee3D7L-JV7o7hlpOivLVwWlUqyiGKGOBtXYuC_wP0yylds"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="carousel-slide">
+<img class="w-full h-full object-cover animate-ken-burns" data-alt="early morning shot of fresh warm buns in a wicker basket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6pot88s-45zrP0lkkGDerJVHg5oJMH7SeAC9wXs5mdvxysUYKqvkMgHxHu59j_JLRm5NseCP1DIfarwT0ePexfQzLJdbB8kEeoMvciu4yc3-2GuLH3AiMvGnDi4E3x3SWzBSpiSZbQFDkVbBHVxk8s04gXvypkwMtWS9AzIq38oQRdiLjXTlaxpMFaONHcvduxHgR07itJTbRv3ExLLhFrJyqfFNIqt4qXwlBfyZwddENps4bd4Q_RAEoOGuHezYECPYWaQ-I8yc"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+</div>
+<!-- Hero Text Content -->
+<div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+<div class="max-w-4xl space-y-8 text-on-primary">
+<h1 class="text-5xl md:text-8xl font-bold tracking-tight leading-[1.1] animate-fade-in-up">Two Generations of <span class="italic font-normal">Sweet Tradition</span></h1>
+<p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-90 animate-fade-in-up [animation-delay:200ms]">From traditional recipes to modern innovation, Pathak Bhandar has been serving love, warmth, and handcrafted bakery delights for decades.</p>
+<div class="flex justify-center pt-4 animate-fade-in-up [animation-delay:400ms]">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-2xl flex items-center gap-3">
+                        See Our Journey
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: FOUNDER & LEGACY TRIBUTE SECTION (Updated to Carousel) -->
+<section class="py-24 bg-surface-container-low relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-secondary-fixed/10 blur-[120px] rounded-full -z-0"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="text-center mb-12 scroll-reveal">
+<span class="text-secondary font-bold uppercase tracking-[0.3em] text-sm">Honoring Our Origins</span>
+<h2 class="text-5xl md:text-6xl font-bold text-primary mt-4 newsreader">The Guardians of Heritage</h2>
+</div>
+<div class="relative max-w-2xl mx-auto min-h-[600px]" id="legacy-carousel-container">
+<!-- Founder 1 Slide -->
+<div class="legacy-slide active transition-all duration-1000">
+<div class="bg-surface p-10 rounded-[3rem] border border-outline-variant/30 shadow-xl flex flex-col items-center text-center group">
+<div class="relative mb-8">
+<div class="absolute -inset-4 border-2 border-dashed border-secondary/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+<div class="w-56 h-56 rounded-full overflow-hidden border-8 border-surface-container-high shadow-2xl grayscale">
+<img class="w-full h-full object-cover" data-alt="dignified black and white portrait of an elderly artisan baker with a kind smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf9M9k-sCXbgvvfGjpyRxVegVsBhvmJOr_iBnh-XPH8Cc5CZ93g0yLq0OxafZp5tzAK-xWRoKc_JSeHWtqt1bZpNDbmNRHC-Ay9FoZ116VK1MFkqIs1Qg-D6YgAgjUasNksZPSiU2ozX_PuPFU4Ldh37fs693zV70TVdtYy6iMQ205DGmKm9euir-B25eq2DasHVkzkRmsMwysWJYGmG1TZdsRN1OVY9PlQZCF5lsHpeH4g4uRpH9YD0dsArAqJVQoGAISG-uuO00"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined !text-2xl" data-icon="star">star</span>
+</div>
+</div>
+<h3 class="text-3xl font-bold text-primary newsreader mb-2">Late Shri. Ram Pathak</h3>
+<p class="text-secondary font-bold uppercase tracking-widest text-xs mb-6">The Founding Father (1957)</p>
+<p class="text-on-surface-variant text-lg leading-relaxed italic">"A loaf of bread is a promise of life kept. We started with one oven and a mountain of faith."</p>
+<div class="w-16 h-px bg-outline-variant my-8"></div>
+<p class="text-on-surface-variant text-sm max-w-md">Our founder's vision for purity and community service remains the cornerstone of every recipe we bake today.</p>
+</div>
+</div>
+<!-- Founder 2 Slide -->
+<div class="legacy-slide transition-all duration-1000">
+<div class="bg-surface p-10 rounded-[3rem] border border-outline-variant/30 shadow-xl flex flex-col items-center text-center group">
+<div class="relative mb-8">
+<div class="absolute -inset-4 border-2 border-dashed border-secondary/30 rounded-full animate-[spin_20s_linear_infinite] [animation-direction:reverse]"></div>
+<div class="w-56 h-56 rounded-full overflow-hidden border-8 border-surface-container-high shadow-2xl grayscale">
+<img class="w-full h-full object-cover" data-alt="portrait of a focused middle aged man in a chef jacket inspecting ingredients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANaE6QXJYTQ8Q31so6m_Q_aQSDbYT5-2JHGs_FeBdYtp4J7Ey2w-95pG74umuHt1V-Rmp6K3mH5D5mY-kXtQxv3ohBgkTh_0WfXeK3gqZIcqqLsE35AS9S-pqux0H3P8HRqCtD4hmSsm-7h7T5RCgLMk3FjuF_Iks3aCNXeLKPbiNV2EPJA2q7F0b8XOsrr34BYdQUxADA-jW-wDg9rpXIt0dxgSgFjfmeEwTOADPywpY5UVBStgttmtOXDxhbNrHAI7ltKS7HEcE"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined !text-2xl" data-icon="history">history</span>
+</div>
+</div>
+<h3 class="text-3xl font-bold text-primary newsreader mb-2">Mr. Vijay Pathak</h3>
+<p class="text-secondary font-bold uppercase tracking-widest text-xs mb-6">Master Baker &amp; Director</p>
+<p class="text-on-surface-variant text-lg leading-relaxed italic">"Respecting the old while embracing the new is how we carry the fire forward."</p>
+<div class="w-16 h-px bg-outline-variant my-8"></div>
+<p class="text-on-surface-variant text-sm max-w-md">Expanding the family legacy into the modern era with a relentless focus on artisanal quality and innovation.</p>
+</div>
+</div>
+<!-- Pagination Dots -->
+<div class="flex justify-center gap-3 mt-8">
+<div class="legacy-dot w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300"></div>
+<div class="legacy-dot w-2.5 h-2.5 rounded-full bg-outline-variant transition-all duration-300"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: LEGACY STORY -->
+<section class="bg-surface py-24">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+<div class="relative group cursor-pointer">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="h-64 rounded-2xl overflow-hidden bg-surface-container scroll-reveal">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="vintage black and white photo of a traditional small bakery storefront" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANaE6QXJYTQ8Q31so6m_Q_aQSDbYT5-2JHGs_FeBdYtp4J7Ey2w-95pG74umuHt1V-Rmp6K3mH5D5mY-kXtQxv3ohBgkTh_0WfXeK3gqZIcqqLsE35AS9S-pqux0H3P8HRqCtD4hmSsm-7h7T5RCgLMk3FjuF_Iks3aCNXeLKPbiNV2EPJA2q7F0b8XOsrr34BYdQUxADA-jW-wDg9rpXIt0dxgSgFjfmeEwTOADPywpY5UVBStgttmtOXDxhbNrHAI7ltKS7HEcE"/>
+</div>
+<div class="h-48 rounded-2xl overflow-hidden bg-surface-container scroll-reveal">
+<img class="w-full h-full object-cover" data-alt="macro shot of high quality organic flour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHWxOzzktesjEy4xm4WoEg3vj3CZuEiiwf8Fo5Nz3kPEO0O-wrprx5d_8VG9cMOec0BTP2ZQ56zd606dlY5Kc0LqHUgcH-ItesVDpEbks4d5QIiYZyNEvt0EyFRP8rEaIr-vqd0gG1B1XhM4dfSMJw1WbYELWXP9kOCTHPbwwaN3LOJFj7PFIp3YS7tM_H9-V10gXDkAf4bQH-j10ERAPotfbhgRpGM-gPkegcM-W8fQ9xcTmSKcHpTq73Wzb9vX5gma5rv75Yvys"/>
+</div>
+</div>
+<div class="pt-12 space-y-4">
+<div class="h-48 rounded-2xl overflow-hidden bg-surface-container scroll-reveal">
+<img class="w-full h-full object-cover" data-alt="artisan baker hands kneading dough" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf9M9k-sCXbgvvfGjpyRxVegVsBhvmJOr_iBnh-XPH8Cc5CZ93g0yLq0OxafZp5tzAK-xWRoKc_JSeHWtqt1bZpNDbmNRHC-Ay9FoZ116VK1MFkqIs1Qg-D6YgAgjUasNksZPSiU2ozX_PuPFU4Ldh37fs693zV70TVdtYy6iMQ205DGmKm9euir-B25eq2DasHVkzkRmsMwysWJYGmG1TZdsRN1OVY9PlQZCF5lsHpeH4g4uRpH9YD0dsArAqJVQoGAISG-uuO00"/>
+</div>
+<div class="h-64 rounded-2xl overflow-hidden bg-surface-container scroll-reveal">
+<img class="w-full h-full object-cover" data-alt="collection of traditional copper baking pans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARFmJLqpNkQZVeH_t4f-3ZJ9K8Uwo2YZYKonwxasVrvo7ZEQpNzi7LQ_cNykaeBaBfNBokuqV4d2jtn4TaXt4XH_zOO8wbqS3p9usIejCuYz6iEo4v9-ZzxBgvAN-vUB3Y3wh44Laxx3VMSfEQbxYMQX7Z5-2XVsNI9aquCzEo-qPJB2nRAk9JSoBVpy_w62QEW7jBs09jjyyU9njF-ZeAK8W0HVg7wkh6rr55r_Tw3ndNHLZbcnORfH8oKTcBDjNbe4blAf0OUXw"/>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 z-20 backdrop-blur-sm bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:backdrop-blur-0 group-hover:bg-transparent">
+<div class="bg-surface/90 px-8 py-4 rounded-xl shadow-2xl border border-primary/20 transform transition-transform group-hover:scale-105">
+<span class="newsreader italic text-2xl text-primary">Explore our Kitchen</span>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-6 scroll-reveal">
+<span class="text-secondary font-bold uppercase tracking-widest text-sm">Since 1957</span>
+<h2 class="text-4xl md:text-5xl font-bold text-primary">Our Legacy Begins</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">Started with a small bakery and big dreams, Pathak Bhandar has grown through passion, dedication, and handcrafted excellence. Every loaf and pastry carries the DNA of our founders—a commitment to purity and the joy of breaking bread together.</p>
+<p class="text-on-surface-variant text-lg leading-relaxed">What began as a single oven in a quiet neighborhood has evolved into a symbol of trust for families across generations, keeping the flame of traditional baking alive in a fast-paced world.</p>
+</div>
+</div>
+</section>
+<!-- SECTION 4: TEAM & WORKPLACE -->
+<section class="py-24 bg-surface-container-highest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 scroll-reveal">
+<div class="max-w-2xl space-y-4">
+<h2 class="text-5xl font-bold text-primary newsreader">The Heart of Pathak Bhandar</h2>
+<p class="text-on-surface-variant text-lg">Our legacy is built by the hands of our incredible team. From the master artisans in our kitchens to the warm smiles at our counters, we are a family of craftspeople.</p>
+</div>
+<div class="bg-primary px-8 py-6 rounded-3xl text-on-primary text-center md:text-left shadow-xl hover:rotate-2 transition-transform">
+<span class="block text-4xl font-bold">100+</span>
+<span class="uppercase tracking-widest text-xs opacity-80">Master Bakers &amp; Artisans</span>
+</div>
+</div>
+<div class="grid md:grid-cols-12 gap-6">
+<div class="md:col-span-7 aspect-[16/9] md:aspect-auto md:h-[500px] rounded-[2.5rem] overflow-hidden group scroll-reveal relative">
+<div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="panoramic shot of the modern baking factory with many bakers at work" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxx7GWzHjwxMoeFscz8QFsk31hnK8Mv0groEcLeJZJptKCQj04k4-BMVQ7y0pKOS1n4oQ1DpwjLUIwaELz1Lhh_PMiKKFwMfYwkk_AWgCa2Py0XpejW1NmsaxNSgMAMjN9E09E4aYeLdv-kOvrKQFm9aKC05Ca7-JMrLLbgCPrrq_tD29N5ednMN-EHreUdvJ1VG845tr5MMR0lb0_iHaH7bF9QogD4Ee3D7L-JV7o7hlpOivLVwWlUqyiGKGOBtXYuC_wP0yylds"/>
+<div class="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold uppercase text-primary">Back-of-House Kitchens</div>
+</div>
+<div class="md:col-span-5 grid grid-rows-2 gap-6">
+<div class="rounded-[2.5rem] overflow-hidden group relative scroll-reveal">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="baker handing bag to customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu21Nem_IsmmCWiHp5C_YWk_K6yC7F5gkPr9X7LJxwo4cj2H8jNbxTRYpaUWmDRgFlnGZduwt-9kcj2lSe8yye9-Q6xh_cMHulMasOB4xPIJvRhueRCWUAsMxXLB9DepnjrW1jmPTMVjY--xJk7dknDgWBxdC5HtYGZMMZdJsFbts2jCodFbXoF-KnwCzJwQotKVUMG3GT0IHDSFOfq7FLoKC6MkDJyxv895rOTNsgzQmLEql6BXxzXsOd7QnAdPezhXTv0rfEO-w"/>
+<div class="absolute bottom-4 left-4 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold uppercase text-primary">Front-of-House Shop</div>
+</div>
+<div class="bg-secondary-fixed rounded-[2.5rem] p-8 flex flex-col justify-center scroll-reveal">
+<p class="text-on-secondary-fixed-variant text-xl font-medium newsreader italic leading-relaxed">"Every hand that touches the dough here carries sixty years of pride. We aren't just making food; we're making history."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: KEY PILLARS (Updated to Infinite Ticker) -->
+<section class="py-16 bg-surface overflow-hidden">
+<div class="relative flex overflow-hidden">
+<div class="flex animate-ticker gap-8 whitespace-nowrap min-w-full items-center">
+<!-- Original Set -->
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="history_edu">history_edu</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Heritage</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Traditional Recipes Passed Down Generations</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="high_quality">high_quality</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Quality</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Premium Ingredients &amp; Fresh Baking</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="innovation">news</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Innovation</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Modern Techniques with Classic Taste</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined !text-3xl" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Trust</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Serving Families for Years</p>
+</div>
+<!-- Duplicate Set for Infinity -->
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="history_edu">history_edu</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Heritage</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Traditional Recipes Passed Down Generations</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="high_quality">high_quality</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Quality</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Premium Ingredients &amp; Fresh Baking</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined !text-3xl" data-icon="innovation">news</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Innovation</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Modern Techniques with Classic Taste</p>
+</div>
+<div class="inline-flex flex-col items-center text-center space-y-4 bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant/10 shadow-sm w-[280px] shrink-0">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined !text-3xl" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<h3 class="text-xl font-bold text-primary">Trust</h3>
+<p class="text-on-surface-variant text-sm whitespace-normal">Serving Families for Years</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: PRESENT DAY -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3ZZYJaVdhJOQ2JjPSGv-uT736YY6nWEO3MAAfhUsCo1kdGkAxsMb2u2Q4YarG1xUI8cQ6C-ddo4gF-PfQbIuZDlMPlWyt8-jsf72ui-whQrwrPvEAeTtyTZddAwfN2RDTxY3l8VaPYHPbKXBe9VSHNilupNasjAXgpqzh7JIs7B9J66qzR3CjzTMZB7b_Qu2YJHKmYiisDooM1ZAvp3HAAyaJJrGIg9iO4VUciW9f0g9jPsA1iEY5HUbR9tKRlMWmm5iFkyYJwLM');"></div>
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center relative z-10">
+<div class="flex-1 space-y-6 scroll-reveal">
+<h2 class="text-4xl md:text-5xl font-bold newsreader">Where Tradition Meets Innovation</h2>
+<p class="text-on-primary-container text-lg leading-relaxed opacity-90">Today, Pathak Bhandar blends traditional baking with modern techniques. We use state-of-the-art temperature controlled fermentation alongside hand-shaping methods that haven't changed in sixty years. This unique synergy ensures that every bite is consistent yet characterful.</p>
+<div class="pt-4 flex gap-4">
+<div class="flex flex-col">
+<span class="text-3xl font-bold">50+</span>
+<span class="text-sm opacity-70 uppercase tracking-tighter">Artisan Products</span>
+</div>
+<div class="w-px h-12 bg-on-primary-container opacity-20"></div>
+<div class="flex flex-col">
+<span class="text-3xl font-bold">12</span>
+<span class="text-sm opacity-70 uppercase tracking-tighter">Master Bakers</span>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full scroll-reveal">
+<div class="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="wide shot of a clean modern bakery kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxx7GWzHjwxMoeFscz8QFsk31hnK8Mv0groEcLeJZJptKCQj04k4-BMVQ7y0pKOS1n4oQ1DpwjLUIwaELz1Lhh_PMiKKFwMfYwkk_AWgCa2Py0XpejW1NmsaxNSgMAMjN9E09E4aYeLdv-kOvrKQFm9aKC05Ca7-JMrLLbgCPrrq_tD29N5ednMN-EHreUdvJ1VG845tr5MMR0lb0_iHaH7bF9QogD4Ee3D7L-JV7o7hlpOivLVwWlUqyiGKGOBtXYuC_wP0yylds"/>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: OUR PROMISE (Updated to Bubble Cluster) -->
+<!-- SECTION 8: FUTURE VISION -->
+<section class="py-24 bg-surface-container-high overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+<div class="relative order-2 md:order-1 scroll-reveal">
+<div class="bg-surface p-4 rounded-3xl shadow-lg -rotate-2">
+<img class="rounded-2xl w-full h-72 object-cover" data-alt="bakery products packaged for delivery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCDthYQb31kntzmFZhB4MFwg629Kd0LB_7Xn3BRr8Ib0jLmStb-LHqkr8_fIVQA78PZJYgcDn1IzpGmRFvDhY7YPlcbUXKkXkG8zQ7QA0QBCw7imAq7KX-xIIpZvxS_gwYg2sSmGehJ8l3xYOYviA1wGdBKWV67UQrzPugfQK1nFv0v8w1uAjH7-1hnyM7tySgjHku2f1FFedGjAfNdQHU8JSOYB3Db3N4ZngbvZFwLh5zW4G2TAqGCPnnmYxhKs2Ruj9UBQppP6M"/>
+</div>
+<div class="absolute -top-10 -right-10 bg-tertiary-fixed-dim text-on-tertiary-fixed p-6 rounded-2xl shadow-xl rotate-12 hidden md:block">
+<span class="material-symbols-outlined text-4xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</div>
+<div class="space-y-6 order-1 md:order-2 scroll-reveal">
+<h2 class="text-4xl font-bold text-primary newsreader">Moving Forward with Innovation</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">With e-commerce, modern distribution, and expanding services, we are bringing the taste of Pathak Bhandar to your doorstep. Our vision is to combine the warmth of a local bakery with the efficiency of modern technology, ensuring that no matter where you are, you're never too far from home-baked goodness.</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-xs font-bold uppercase tracking-wider">E-Commerce</span>
+<span class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-xs font-bold uppercase tracking-wider">Eco-Packaging</span>
+<span class="px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-xs font-bold uppercase tracking-wider">Nationwide Delivery</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 9: CLOSING -->
+<section class="py-32 bg-surface text-center relative px-6 overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+<span class="text-[20rem] font-bold newsreader italic">1957</span>
+</div>
+<div class="relative z-10 space-y-10 max-w-2xl mx-auto scroll-reveal">
+<h2 class="text-5xl md:text-6xl font-bold text-primary newsreader">Baking Legacy, Serving Happiness</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg hover:shadow-primary/20">
+                    Explore Our Products
+                </button>
+<button class="bg-surface-container-highest text-primary px-10 py-5 rounded-xl font-bold text-lg hover:bg-surface-container-high transition-colors">
+                    Contact Us
+                </button>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="bg-[#fbf2ec] dark:bg-[#271900] w-full rounded-t-[2rem]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
+<div class="flex flex-col gap-4 items-center md:items-start">
+<span class="font-['Newsreader'] text-3xl text-[#47160b]">Pathak Bhandar</span>
+<p class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc]">© 1957 Pathak Bhandar. Crafted with heritage.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#47160b] underline decoration-[#ffdbcd] decoration-2 hover:text-[#47160b] dark:hover:text-[#ffdeaa] transition-colors" href="#">Our Story</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] hover:text-[#47160b] dark:hover:text-[#ffdeaa] transition-colors" href="#">The Bakery</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] hover:text-[#47160b] dark:hover:text-[#ffdeaa] transition-colors" href="#">Sustainability</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#632b1e] dark:text-[#e9e1dc] hover:text-[#47160b] dark:hover:text-[#ffdeaa] transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+    // Hero Carousel Logic
+    let currentHeroSlide = 0;
+    const heroSlides = document.querySelectorAll('.carousel-slide');
+    
+    function nextHeroSlide() {
+        heroSlides[currentHeroSlide].classList.remove('active');
+        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+        heroSlides[currentHeroSlide].classList.add('active');
+    }
+    setInterval(nextHeroSlide, 6000);
+
+    // Legacy Carousel Logic (Auto-playing side-by-side)
+    let currentLegacySlide = 0;
+    const legacySlides = document.querySelectorAll('.legacy-slide');
+    const legacyDots = document.querySelectorAll('.legacy-dot');
+
+    function nextLegacySlide() {
+        legacySlides[currentLegacySlide].classList.remove('active');
+        legacyDots[currentLegacySlide].classList.replace('bg-primary', 'bg-outline-variant');
+        
+        currentLegacySlide = (currentLegacySlide + 1) % legacySlides.length;
+        
+        legacySlides[currentLegacySlide].classList.add('active');
+        legacyDots[currentLegacySlide].classList.replace('bg-outline-variant', 'bg-primary');
+    }
+    setInterval(nextLegacySlide, 5000);
+
+    // Scroll Reveal and Bubble Animation Logic
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe standard scroll reveals
+    document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+
+    // Observe bubbles for staggered entrance
+    const bubbleObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Apply staggered delay via inline style
+                const bubbles = document.querySelectorAll('.bubble');
+                bubbles.forEach((b, i) => {
+                    b.style.animationDelay = `${i * 0.2}s`;
+                    b.classList.add('visible');
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const bubbleContainer = document.querySelector('.bubble-container');
+    if (bubbleContainer) bubbleObserver.observe(bubbleContainer);
+</script>
+</body></html>

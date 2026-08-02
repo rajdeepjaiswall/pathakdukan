@@ -1,0 +1,269 @@
+Replit AI Agent Task — Dynamic Testimonial & Review System (Non-Breaking Integration)
+
+You are working on an existing production eCommerce platform.
+Your task is to add a fully functional testimonial & review system without modifying or breaking any existing functionality, UI layout, or business logic.
+
+This must be implemented as an add-on feature, not a rewrite.
+
+---
+
+Core Objective
+
+There is already a static testimonial section at the bottom of the homepage.
+
+Convert this into a dynamic testimonial system powered by real customer delivery-based reviews, while keeping the design intact.
+
+---
+
+Critical Rules (Must Follow)
+
+- Do NOT modify unrelated UI sections
+- Do NOT break any current features
+- Do NOT restructure homepage layout
+- Extend existing components only
+- Keep backward compatibility
+- Make system modular and scalable
+
+---
+
+Feature 1 — Testimonial After Delivery
+
+When an order status becomes:
+
+Delivered / Completed
+
+Inside:
+
+Orders → Order Details
+
+Add a new section:
+
+"Write a Testimonial / Review"
+
+Fields:
+
+- Product Name (Auto-filled)
+- Order ID (Hidden metadata)
+- User Name (Auto-filled)
+- Star Rating (1–5 stars)
+- Review Text (Textarea)
+- Optional Image Upload
+- Submit Button
+
+---
+
+Submission Logic
+
+When user submits:
+
+- Testimonial should NOT appear publicly
+- Store as Pending Review
+- Send to Admin Dashboard
+
+Suggested Database Structure:
+
+Testimonials Table
+
+- id
+- user_id
+- order_id
+- product_id
+- user_name
+- rating
+- review_text
+- image (optional)
+- status (pending / approved / rejected)
+- featured (boolean)
+- created_at
+- approved_by
+- approved_at
+
+---
+
+Feature 2 — Admin Dashboard Integration
+
+Add new Admin Menu Item:
+
+"Testimonials / Reviews"
+
+Create 3 Tabs:
+
+---
+
+Pending Reviews
+
+Show:
+
+- User Name
+- Product Name
+- Rating
+- Review Text
+- Date
+- Approve Button
+- Reject Button
+- Mark as Featured Toggle
+
+---
+
+Approved Reviews
+
+Show:
+
+- Approved testimonials
+- Remove option
+- Unapprove option
+- Feature toggle
+
+---
+
+Rejected Reviews
+
+- Store rejected testimonials
+- Optional restore to pending
+
+---
+
+Feature 3 — Product-Level Reviews
+
+Approved testimonials should also appear:
+
+On Product Pages
+
+Create section:
+
+"Customer Reviews"
+
+Display:
+
+- User Name
+- Rating Stars
+- Review Text
+- Date
+- Verified Purchase Badge
+
+Optional:
+
+- Product Thumbnail
+- User Avatar
+
+---
+
+Feature 4 — Homepage Dynamic Testimonials
+
+There is already a static testimonial section at bottom of homepage.
+
+Convert it into:
+
+Dynamic Rotating Testimonial Section
+
+Requirements:
+
+- Pull only approved testimonials
+- Auto rotate testimonials
+- Smooth animation
+- Random display order
+- Continuous loop
+
+Animation Options:
+
+- Fade in / Fade out
+- Sliding cards
+- Flash card style rotation
+- Rotate every 3–5 seconds
+
+---
+
+Testimonial Card Design
+
+Each card should display:
+
+- User Name
+- Star Rating
+- Testimonial Text
+- Product Name
+- Verified Purchase Badge
+
+Optional:
+
+- Product image
+- Avatar placeholder
+
+---
+
+Performance Optimization
+
+- Load testimonials via API
+- Lazy load testimonials
+- Cache approved testimonials
+- Limit rotating testimonials (10–20 max)
+
+---
+
+Suggested API Endpoints
+
+POST /submit-testimonial
+GET /testimonials/pending
+GET /testimonials/approved
+PATCH /testimonials/approve
+PATCH /testimonials/reject
+GET /testimonials/homepage
+GET /testimonials/product/:productId
+
+---
+
+Security Requirements
+
+- Only logged in users can submit
+- Only delivered orders eligible
+- Only admins approve reviews
+- Validate inputs
+- Prevent spam submissions
+
+---
+
+Important Non-Breaking Requirement
+
+- Do NOT change homepage structure
+- Convert static testimonials into dynamic content
+- Maintain same design and styling
+
+---
+
+Final User Flow
+
+User places order
+↓
+Order delivered
+↓
+User submits testimonial
+↓
+Admin reviews testimonial
+↓
+Admin approves testimonial
+↓
+Testimonial appears:
+
+- Homepage dynamic testimonial section
+- Product page review section
+
+---
+
+Optional Future-Ready Features
+
+- Highlight latest testimonials
+- Featured testimonials
+- Average product rating
+- Review count per product
+
+---
+
+Final Instruction
+
+Implement this as a modular testimonial system that:
+
+- Does not disturb existing code
+- Is scalable
+- Works on mobile and desktop
+- Maintains UI consistency
+
+End Task

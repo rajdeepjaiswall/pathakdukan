@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.cpanel
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database
+*.sqlite
+*.db
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Replit specific
+.replit
+.upm/
+
+# Deployment files
+pathak-bhandar-cpanel-deployment.tar.gz
+cpanel-deployment-package/
+
+# Test files
+coverage/
+.nyc_output/
+
+# Backup files
+*.backup
+*.bak
+
+# Documentation build
+docs/_build/
+
+# Python (if any)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Java (if any)
+*.class
+*.jar
+*.war
+*.ear
+
+# Misc
+*.tgz
+*.tar.gz
+*.zip

@@ -1,0 +1,300 @@
+You are working on an existing mobile-first bakery delivery website called "Pathak Bhandar".
+
+You must enhance two sections using the attached reference images:
+
+1. Deal of the Day Section
+2. Chef Editorial Section
+
+Maintain:
+
+- Existing typography
+- Rounded UI
+- Mobile-first layout
+- TailwindCSS styling
+- Same spacing system
+- Same padding (px-6)
+
+Do NOT redesign the entire page.
+
+Only enhance these two sections.
+
+--------------------------------
+
+DEAL OF THE DAY SECTION (REFERENCE BASED)
+
+Design Requirements:
+
+Create a standout card that visually differs from rest of page.
+
+Structure:
+
+Top Section:
+Large rounded image  
+Full width  
+Soft rounded corners (rounded-[2.5rem])
+
+Top Left Badge:
+"DEAL OF THE DAY"
+
+Badge Style:
+Red background  
+White text  
+Rounded pill  
+Bold uppercase  
+
+Center Overlay:
+
+Countdown Timer Card
+
+Floating pill shape  
+Soft white background  
+Blur backdrop  
+Centered horizontally
+
+Timer Format:
+
+ENDS IN
+
+04 : 22 : 15
+
+--------------------------------
+
+BOTTOM CONTENT SECTION
+
+Product Name:
+Large bold typography
+
+Example:
+Assorted Butter Cookies
+
+Two line description:
+
+Handcrafted with premium butter
+
+Price Layout:
+
+₹249 (Large Bold)
+
+₹399 (Strikethrough smaller)
+
+Right Side:
+
+Circular Add to Cart Button
+
+Button Style:
+
+Circular  
+Primary color background  
+White icon  
+Floating button style  
+Shadow
+
+--------------------------------
+
+STYLE RULES
+
+This card must:
+
+Have different background color  
+More padding  
+More elevation  
+Standout from rest  
+
+Example:
+
+bg-surface-container-high  
+rounded-[2.5rem]  
+shadow-xl  
+
+--------------------------------
+
+BACKEND IMPLEMENTATION
+
+Admin Dashboard:
+
+Add toggle:
+
+[ ] Product of the Day
+
+Database Field:
+
+isProductOfDay: boolean
+
+Frontend Query:
+
+Fetch:
+
+isLive = true  
+AND isProductOfDay = true
+
+Limit: 1
+
+--------------------------------
+
+CHEF EDITORIAL SECTION (REFERENCE BASED)
+
+Design Requirements:
+
+Magazine style layout  
+Floating text card over background image  
+
+Each Chef Card:
+
+Large background image  
+Rounded corners  
+Image fills background  
+
+Floating Card:
+
+Glassmorphism / soft white card  
+Rounded corners  
+Soft shadow  
+Floating above image  
+
+--------------------------------
+
+TEXT CONTENT
+
+Chef Title:
+
+Dark Truffle
+
+Chef Message:
+
+"Our signature Belgian cocoa masterpiece, crafted for connoisseurs."
+
+Price:
+
+₹549
+
+Button:
+
+ORDER
+
+--------------------------------
+
+LAYOUT RULES
+
+First card:
+
+Image right  
+Floating card left  
+
+Second card:
+
+Image left  
+Floating card right  
+
+Create visual contrast
+
+--------------------------------
+
+STYLE
+
+Rounded cards  
+Soft shadow  
+Glass effect  
+Magazine feel  
+Editorial style  
+
+--------------------------------
+
+BACKEND IMPLEMENTATION
+
+Admin Dashboard:
+
+Add toggle:
+
+[ ] Chef Special
+
+Database Field:
+
+isChefSpecial: boolean
+
+Frontend Query:
+
+Fetch:
+
+isLive = true  
+AND isChefSpecial = true
+
+Limit:
+
+2 Products
+
+--------------------------------
+
+CARD STRUCTURE
+
+Image container:
+
+rounded-3xl  
+overflow-hidden  
+
+Floating Card:
+
+bg-white/90  
+backdrop-blur  
+rounded-[2rem]  
+shadow-xl  
+
+--------------------------------
+
+INTERACTION
+
+Add subtle hover:
+
+scale 1.02  
+shadow increase  
+
+--------------------------------
+
+FINAL HOMEPAGE ORDER
+
+Top Navigation
+
+Hero
+
+Categories
+
+Banner
+
+Cart Reminder
+
+Trending
+
+Featured Products
+
+Banner
+
+Deal of the Day (New Style)
+
+Recently Purchased
+
+Chef Editorial (New Style)
+
+Testimonials
+
+Bottom Navigation
+
+--------------------------------
+
+IMPORTANT
+
+Deal of the Day must look:
+
+Premium  
+Standalone  
+Hero-like  
+
+Chef Section must look:
+
+Magazine  
+Editorial  
+Luxury  
+
+Maintain:
+
+Mobile responsive  
+Tailwind styling  
+Performance optimized

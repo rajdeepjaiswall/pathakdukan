@@ -1,0 +1,1 @@
+- [Dev server routing gotcha](dev-server-routing.md) — unmatched /api/* falls through to Vite returning index.html (200 text/html); a freshly-added route returning HTML means the tsx server is stale → restart the workflow.

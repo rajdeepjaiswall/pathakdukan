@@ -1,0 +1,49 @@
+**Project: Pathak Bhandar E-Commerce Platform**
+
+**Overview**: Build a fully responsive, India-focused e-commerce platform for Pathak Bhandar, a premium bakery and confectionery store in Prayagraj, Uttar Pradesh, established in 1957, specializing in local biscuits and cookies. The platform consists of two integrated portals: a **Shopkeeper Dashboard** (admin/vendor panel) and a **Customer Panel** (front-end store), using provided logo, theme artwork, and color palette (from attached images, supplemented by black, white, red for premium, luxurious UI). The platform will be developed using **React** (frontend), **Node.js/Express** (backend), hosted on **Replit**, with **MongoDB Atlas** for product/catalog data and **PostgreSQL** (via Supabase/Replit DB) for users/orders/roles. Ensure WCAG 2.1 AA accessibility, fast page loads (lazy loading, minified assets, CDN), and a modular, secure codebase.
+
+**Customer Panel (Public, /)**:  
+- **Design**: Mobile-first, responsive UI (desktop, tablet, mobile) with premium, luxurious feel using provided logo, theme art, and colors.  
+- **Authentication**: Customer registration/login via mobile-OTP (primary) and optional email, JWT-based.  
+- **Features**:  
+  - Searchable, filterable product catalog with categories, subcategories, variants (size, color, SKU), high-res image galleries, stock, pricing (with GST breakdown: CGST/SGST/IGST), reviews/ratings, related products, and “Recently Viewed” tracking.  
+  - Smart cart with dynamic sub-total, GST, PIN code-based shipping, and coupon code application.  
+  - Checkout with address management (PIN code lookup for geo-fenced delivery), delivery slot selection (same-day/scheduled), order notes, and “Confirm & Pay”.  
+  - Payments: Dynamic UPI QR-code generation (PhonePe, Google Pay, Paytm) via node-qrcode with webhook-based status updates, PhonePe SDK for in-app mobile checkout, plus credit/debit cards (Visa, Mastercard, RuPay), net banking, wallets, EMI (with calculator), and COD (PIN code-toggled).  
+  - Real-time “Track My Order” page (Processing, Dispatched, Out for Delivery, Delivered) with SMS/WhatsApp notifications.  
+  - Returns/exchange workflow with reason selection and pickup scheduling (in-house/partner courier).  
+  - Banner ads (full-width hero, sidebar, timed/exit-intent pop-ups) defined in admin panel.  
+  - Analytics: Visitor stats (unique visitors, page views, bounce rate, session duration), integration with Google Analytics, Facebook Pixel, Google Tag Manager, UTM tracking, and A/B testing hooks.  
+  - Localization: Hindi/regional language support with locale switcher, INR currency.  
+
+**Shopkeeper Dashboard (/admin, ID: pathakji, Password: bhandar123)**:  
+- **Roles**: Super Admin (full control, /super-admin, ID: rajdeep, Password: web123), Inventory Manager, Order Manager, Marketing Manager.  
+- **Order Management**: Filter by status (Pending, Confirmed, Shipped, Delivered, Returned), bulk actions (status updates, print shipping labels), AWB generation via courier APIs (Delhivery, Ecom Express, Bluedart, DTDC, Shadowfax, Dunzo), in-house delivery executive assignment with GPS tracking (Google Maps API), low-stock alerts, return approvals.  
+- **Product & Inventory**: Add/edit/delete products, SKU/variant management, bulk CSV/Excel imports/exports, stock monitoring, threshold alerts, GST slab configuration (0%, 5%, 12%, 18%, 28%) with HSN/SAC codes.  
+- **Customer Management**: View registered users, filter by activity/spend, access purchase histories, CRM hooks (Zoho, HubSpot).  
+- **Shipping & Tax**: Zone-based shipping (free above X value, flat rate, per-kg), CGST/SGST/IGST rules.  
+- **Promotions**: Coupon codes (percentage/flat), usage limits, flash sales with timers, bundled deals.  
+- **Content Management**: Edit static pages (About Us, FAQ, T&C, Privacy), manage blog for SEO, configure ad placements.  
+- **Theme Customizer**: Live preview of provided theme/colors, drag-&-drop layouts (header, hero, product grids, footer), Google Fonts, custom CSS/HTML with sandboxed preview, backup/restore.  
+- **Analytics**: Sales (day/week/month/year), top products/categories, revenue by payment, cart abandonment, traffic sources, heatmaps, conversion funnels, CSV/Excel exports.  
+- **Notifications**: New orders, low stock, failed payments via customizable email/SMS templates.  
+- **Settings**: SSL enforcement, database backup/restore, maintenance mode, API key management, 2FA for admin logins.  
+- **Extensibility**: RESTful APIs, webhooks (order.created, order.paid, order.shipped), plugin support (chatbots, filters, coupons).  
+
+**Super Admin (/super-admin)**: Full control over admin accounts, theme customization, and all features of Shopkeeper Dashboard.  
+
+**Technical Requirements**:  
+- **Frontend**: React, React Router for navigation, responsive grid system.  
+- **Backend**: Node.js/Express, Express Router for APIs, JWT authentication, secure access control.  
+- **Database**: MongoDB Atlas (products/catalog), PostgreSQL (users/orders/roles).  
+- **Integrations**: PhonePe SDK, courier APIs, Google Maps API, analytics tools.  
+- **Security**: JWT tokens, 2FA, SSL, secure API routing.  
+- **Hosting**: Replit, with modular folder structure for scalability.  
+- **UI/UX**: Use provided logo, theme art, and colors; ensure premium, luxurious aesthetic; meet WCAG 2.1 AA; optimize for performance.  
+
+**Business Details**:  
+- **Name**: Pathak Bhandar  
+- **Address**: 18, Chowk, Malviyanagar, Prayagraj, Uttar Pradesh 211003  
+- **Specialty**: Local biscuits and cookies since 1957  
+
+**Deliverables**: Fully functional platform on Replit with preconfigured logins, responsive UI, and all features implemented as specified, using provided branding assets.

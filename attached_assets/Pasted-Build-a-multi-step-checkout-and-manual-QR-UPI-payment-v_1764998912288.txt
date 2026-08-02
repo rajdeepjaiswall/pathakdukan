@@ -1,0 +1,136 @@
+Build a multi-step checkout and manual QR + UPI payment verification system with the following requirements:
+
+1. USER JOURNEY PROGRESS NAVIGATION (TOP PROGRESS BAR)
+Create a horizontal step progress indicator at the top of the checkout page with these steps:
+- Select Address
+- Select Payment Method
+- Waiting for Payment
+- Order Status
+
+The progress bar should visually highlight the active step as the user moves forward.
+
+2. PAYMENT METHODS
+Include normal online payment methods AND a new option called:
+- "Pay via QR (Manual Payment)"
+
+When the user selects "Pay via QR":
+- Display a QR code image (from admin config).
+- Display the UPI ID below the QR.
+- Show instructions: "Scan the QR or tap the UPI ID to pay, then wait for confirmation."
+
+Behavior:
+- If the user CLICKS/TAPS the **UPI address**:
+  - Open the system "choose app" popup with all installed UPI/payment apps (GPay, PhonePe, Paytm, etc.).
+  - Use a standard UPI deep link like: `upi://pay?pa=<upi_id>&am=<amount>&tn=<order_id_or_note>&cu=INR`
+  - The selected app should open with:
+    - Amount pre-filled
+    - UPI ID pre-filled
+    - Note/remark (like Order ID) pre-filled
+  - User only has to confirm the payment.
+
+- If the user CLICKS/TAPS the **QR image**:
+  - Open the QR image in a full-screen/lightbox view for easier scanning.
+
+3. ORDER STATUS & PENDING PAYMENT
+- After selecting "Pay via QR" and placing the order, if payment is not yet confirmed:
+  - The order should still be created in the database.
+  - Its initial status is: **"Pending Payment"**.
+- In the user's **Order History**:
+  - Show such orders with:
+    - Status: "Pending Payment"
+    - Button or link: "Enter UTR / Reference Number"
+  - When clicked, show:
+    - A text field for the customer to enter the UTR/transaction reference number.
+    - A submit button.
+  - Once submitted:
+    - Save this UTR number in the order’s manual payment details.
+    - Make this UTR visible to the admin in the manual payment verification section (see below).
+
+4. ADMIN DASHBOARD – MANUAL PAYMENT METHODS MENU
+Add a new menu in the Admin Dashboard:
+- "Manual Payment Methods"
+
+Inside this menu create two sections:
+A) Set QR
+B) Payment History (Manual Payments)
+
+A) SET QR SECTION
+Admin should have:
+- File upload field to upload QR image (for UPI QR).
+- Input field to enter UPI ID (e.g., "name@bank" or "mobile@upi").
+- Save / Update button.
+- The current active QR image and UPI ID should be shown to the admin.
+- Only one active QR/UPI configuration should be visible to users.
+
+B) PAYMENT HISTORY SECTION (MANUAL PAYMENTS)
+Display a table with at least:
+- Customer Name
+- Customer Contact
+- Order ID
+- Amount
+- Transaction Time (order placed time)
+- Payment Method (e.g., "Pay via QR (Manual)")
+- UTR / Reference Number (from user input)
+- Status (Pending / Success / Failed)
+- Toggle or controls for admin verification:
+  - YES = Payment Successful
+  - NO = Payment Failed
+
+When admin sets the status:
+- YES (Payment Successful):
+  - Update order status to "Payment Successful" and "Order Confirmed".
+  - User-facing message: "Payment Successful. Your order is confirmed."
+- NO (Payment Failed):
+  - Update order status to "Payment Failed" and "Order Unsuccessful".
+  - User-facing message: "Payment Failed. Order unsuccessful. Try again."
+  - Also show: "If money is deducted, it will reach you in 3 working days."
+
+5. USER INTERFACE FOR FAILED PAYMENT
+When admin marks payment as NO (failed):
+- On the user’s order details page:
+  - Show a WhatsApp support icon/button.
+  - On click, open WhatsApp chat (web or app) with a predefined support number using a standard WhatsApp URL.
+  - Pre-filled message text example:
+    - "My payment was deducted but the order failed. Order ID: <order_id>. Please assist."
+
+6. REAL-TIME STATUS UPDATE
+- The user’s order details page should:
+  - Auto-refresh OR
+  - Use polling / WebSockets to periodically check payment status from the server.
+- When the admin changes the status (Pending → Success/Failed), the user should see the updated status without manual page reload (if possible).
+
+7. SECURITY & DATA HANDLING
+- Only admin users can:
+  - Access "Manual Payment Methods"
+  - Change QR image and UPI ID
+  - Change payment status (YES/NO)
+- Validate file upload (QR image) type and size.
+- Sanitise all user inputs (including UTR).
+- Store manual payment records securely with timestamps and admin ID who verified.
+
+8. TECH STACK SUGGESTION (YOU CAN PICK ONE AND IMPLEMENT)
+- Frontend: React / Next.js
+- Backend: Node.js + Express OR Django (choose one stack and implement end-to-end)
+- Database: PostgreSQL / MySQL
+- Image Storage: Local uploads folder or cloud (e.g., S3, Cloudinary)
+- Real-time Updates: WebSockets (Socket.IO) or periodic polling from frontend.
+
+9. IMPLEMENTATION REQUIREMENTS
+Generate full backend + frontend implementation with:
+- Database schema / migrations for:
+  - Users
+  - Orders
+  - ManualPaymentDetails (including UTR, status, timestamps, admin_id)
+  - ManualPaymentConfig (current QR image + UPI ID)
+- REST API endpoints (or GraphQL) for:
+  - Creating orders with "Pay via QR"
+  - Fetching and updating manual payment details (admin-only)
+  - Uploading/updating QR image and UPI ID (admin-only)
+  - Getting user orders and their status
+- Frontend UI components for:
+  - Checkout steps with top progress bar
+  - Payment method selection with "Pay via QR"
+  - UPI click → open payment apps via deep link
+  - Full-screen QR preview
+  - Order History with "Pending Payment" and UTR input
+  -

@@ -1,0 +1,164 @@
+You are a Replit AI agent working on an existing full-stack e-commerce application with a Supabase backend.
+
+Your task is to enhance the Hero Section of the About Us page and its corresponding Admin Dashboard (About Us Editor) WITHOUT breaking or modifying any existing functionality.
+
+---
+
+⚠️ CRITICAL CONSTRAINTS (STRICT)
+
+- DO NOT modify the navbar (top bar)
+- DO NOT modify the footer
+- DO NOT change layout, spacing, fonts, or design system
+- DO NOT break existing carousel functionality
+- DO NOT modify other sections of the About page
+- ONLY extend the Hero section and its admin controls
+- Maintain backward compatibility with existing data
+
+---
+
+🎯 OBJECTIVE
+
+Enhance the Hero Section to support:
+
+- Structured text fields
+- CTA button control
+- Image + video background carousel
+- Intelligent autoplay behavior
+
+---
+
+🖥️ ADMIN DASHBOARD (About Us Editor → Hero Section)
+
+Enhance the existing Hero Block UI to include the following fields:
+
+1. Text Fields
+
+- Overline Text (Slim Text)
+  → small uppercase text (e.g., “HONORING OUR ORIGINS”)
+
+- Main Heading (Big Text)
+  → large serif headline
+
+- Paragraph (Description)
+  → standard text (visually limited to ~3 lines on frontend)
+
+---
+
+2. Button Controls
+
+Add:
+
+- Button Text
+- Button Link (URL)
+
+---
+
+3. Media Upload (IMPORTANT)
+
+Modify existing media uploader to support:
+
+- Multiple media items (images + videos)
+- Display media count
+- Preview thumbnails
+
+---
+
+4. Media Behavior Rules
+
+Each media item must support:
+
+- type detection (image or video)
+
+---
+
+🌐 FRONTEND (Hero Section Rendering)
+
+1. Text Rendering
+
+Bind dynamically:
+
+- Overline → small uppercase styled text
+- Heading → large Newsreader font
+- Paragraph → centered description
+- Button → CTA with link
+
+---
+
+2. Background Carousel (CRITICAL LOGIC)
+
+Use existing carousel system and extend:
+
+For Images:
+
+- Display for 3 seconds
+- Apply smooth fade transition
+- Apply subtle zoom (ken-burns if already present)
+
+For Videos:
+
+- Autoplay
+- Muted (no sound)
+- Do NOT loop
+- When video ends → automatically go to next slide
+
+---
+
+3. Fallback Behavior
+
+- If no media → do not break UI
+- If only 1 media → no sliding required
+- If video fails → skip to next item
+
+---
+
+4. Overlay
+
+- Maintain existing dark overlay
+- Do not change styling
+
+---
+
+🧱 DATA STRUCTURE (Supabase - extend safely)
+
+Extend existing Hero section data with:
+
+- overline_text
+- heading
+- description
+- button_text
+- button_link
+- media (array of objects with type: image/video, url)
+
+⚠️ Do NOT delete or overwrite existing fields
+⚠️ Map old data to new structure if needed
+
+---
+
+🔁 DATA FLOW
+
+- Admin updates → stored in Supabase
+- Frontend fetches dynamically
+- Changes reflect instantly
+
+---
+
+🛑 SAFETY RULES
+
+- DO NOT touch other About sections
+- DO NOT change homepage logic
+- DO NOT modify banner system
+- DO NOT introduce new styling
+- ONLY extend Hero functionality
+
+---
+
+✅ EXPECTED RESULT
+
+- Hero section fully controllable from admin
+- Supports text + button + mixed media
+- Carousel behaves correctly for images and videos
+- No existing functionality is broken
+
+---
+
+End of task.

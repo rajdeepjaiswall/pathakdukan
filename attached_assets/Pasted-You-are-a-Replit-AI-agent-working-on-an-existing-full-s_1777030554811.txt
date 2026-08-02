@@ -1,0 +1,183 @@
+You are a Replit AI agent working on an existing full-stack e-commerce application with a Supabase backend.
+
+Your task is to reorganize and extend the existing banner management system and homepage banner rendering WITHOUT altering any current working functionality.
+
+---
+
+⚠️ CRITICAL CONSTRAINTS (STRICT)
+
+- DO NOT modify or break the current working hero carousel (image + video support must remain EXACTLY as is)
+- DO NOT change existing data structure destructively
+- DO NOT remove or overwrite existing banner logic
+- DO NOT affect any unrelated UI, routes, or components
+- ONLY reorganize and extend in a backward-compatible way
+- If any new feature fails, existing behavior must still work
+
+---
+
+🎯 OBJECTIVE
+
+1. Group existing carousel into a structured “Hero Banner” block
+2. Introduce modular “Banner Blocks” for each homepage section
+3. Replicate existing carousel behavior for all new banner blocks
+4. Enable admin to control banners block-by-block
+5. Maintain same media capability (images + videos + auto carousel)
+
+---
+
+🧱 ADMIN DASHBOARD CHANGES
+
+1. Reorganize Existing Banner
+
+- Take the current banner system (which already contains images/videos)
+
+- Wrap it under a labeled section:
+  
+  👉 "Hero Banner"
+
+- Display:
+  
+  - All existing media (unchanged)
+  - Media count
+  - Existing functionality intact
+
+⚠️ This is only a UI grouping change — NO backend logic change
+
+---
+
+2. Introduce “Banner Blocks” System
+
+Create new configurable banner blocks:
+
+Each block represents a section placement:
+
+- after_featured
+- after_trending
+- after_zero_products
+- after_chef_editorial
+
+---
+
+3. Each Banner Block Must Support:
+
+- Multiple media upload (images + videos)
+- Carousel behavior (same as hero banner)
+- Auto-slide functionality
+- Responsive layout
+- Redirect URL (optional per media or per block)
+- Enable/Disable toggle
+
+---
+
+4. Add Banner Block UI
+
+Add a new button:
+
+👉 “Add Banner Block”
+
+On click:
+
+- Ask for:
+  - Placement (dropdown of sections)
+  - Banner Name (optional label)
+- Then allow:
+  - Upload media (multiple)
+  - Toggle ON/OFF
+  - Add redirect link
+
+---
+
+5. Block-Based Organization UI
+
+In admin panel, display like:
+
+- Hero Banner (existing system)
+- Banner Block: After Featured
+- Banner Block: After Trending
+- Banner Block: After Zero Products
+- Banner Block: After Chef Editorial
+
+Each block:
+
+- Expandable
+- Editable independently
+- Shows number of media items
+
+---
+
+🌐 FRONTEND (Homepage Integration)
+
+1. Hero Banner
+
+- Keep EXACT SAME functionality
+- No change in rendering logic
+- Only ensure it maps to “Hero Banner” group
+
+---
+
+2. Section Banner Blocks
+
+After each section, inject banner block:
+
+- After Featured Products → render "after_featured"
+- After Trending Local → render "after_trending"
+- After Zero Products → render "after_zero_products"
+- After Chef Editorial → render "after_chef_editorial"
+
+---
+
+3. Rendering Rules
+
+For each block:
+
+- If enabled AND has media:
+  - Render carousel
+  - Use SAME logic as hero banner (reuse component if possible)
+- If no data:
+  - Render nothing (no empty UI)
+
+---
+
+4. Carousel Behavior
+
+ALL banner blocks must:
+
+- Support images + videos
+- Auto-slide
+- Swipe (mobile)
+- Smooth transition
+- Same styling as hero (scaled appropriately)
+
+---
+
+🔁 DATA HANDLING (Supabase)
+
+- Extend existing banner storage (do NOT replace)
+- Add:
+  - placement field (for block mapping)
+  - is_active field
+- Reuse current media storage logic
+
+---
+
+🛑 SAFETY RULES (MANDATORY)
+
+- DO NOT change existing hero banner logic
+- DO NOT break current carousel functionality
+- DO NOT modify unrelated components (cart, navigation, products, etc.)
+- DO NOT hardcode any banner
+- ALL new banners must be dynamic and database-driven
+
+---
+
+✅ EXPECTED RESULT
+
+- Existing banner becomes “Hero Banner” (unchanged behavior)
+- New modular banner blocks added per section
+- Each block behaves like a mini hero carousel
+- Admin has full control over each section banner independently
+- System remains stable and scalable
+
+---
+
+End of task.

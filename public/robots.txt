@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /super-admin/
+Disallow: /checkout
+Disallow: /cart
+Disallow: /order-confirmation
+Disallow: /otp-test
+Disallow: /complete-profile
+Disallow: /phonepe-callback
+
+Sitemap: https://www.pathakbhandar.in/sitemap.xml

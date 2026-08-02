@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Heritage &amp; Future | Pathak Bakers</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B4513",
+                        "background-light": "#F5F1E9",
+                        "background-dark": "#1a1a1a",
+                        "accent-blue": "#2D3E50",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Outfit", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-body bg-background-light text-slate-800;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transform: rotateX(2deg) rotateY(-2deg);
+            transition: transform 0.3s ease;
+            box-shadow: 12px 12px 24px rgba(0,0,0,0.1), -4px -4px 12px rgba(255,255,255,0.5);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #8B4513 0%, #2D3E50 100%);
+        }
+        .stat-shadow {
+            box-shadow: 0 10px 30px -10px rgba(45, 62, 80, 0.2), 0 4px 6px -2px rgba(45, 62, 80, 0.05);
+        }
+        .slider-snap {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slide-item {
+            scroll-snap-align: center;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="dark:bg-background-dark dark:text-slate-100">
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-black/5">
+<div class="flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-accent-blue rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">P</div>
+<div>
+<h1 class="font-display font-bold text-lg leading-none text-accent-blue dark:text-white">Pathak Bakers</h1>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold">Heritage &amp; Vision</p>
+</div>
+</div>
+<button class="p-2 text-accent-blue dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-6 py-3 bg-accent-blue text-white/80 text-[11px] font-bold uppercase tracking-wider border-t border-white/5">
+<a class="whitespace-nowrap flex items-center gap-1" href="#hero"><span class="w-1 h-1 bg-primary rounded-full"></span> Legacy</a>
+<a class="whitespace-nowrap flex items-center gap-1" href="#timeline"><span class="w-1 h-1 bg-primary rounded-full"></span> 1957-Present</a>
+<a class="whitespace-nowrap flex items-center gap-1" href="#owners"><span class="w-1 h-1 bg-primary rounded-full"></span> Leadership</a>
+<a class="whitespace-nowrap flex items-center gap-1" href="#future"><span class="w-1 h-1 bg-primary rounded-full"></span> Future</a>
+</div>
+</header>
+<main>
+<section class="relative min-h-[500px] flex items-center pt-10 pb-12 px-6 overflow-hidden" id="hero">
+<div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 w-full">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                Our Legacy
+            </div>
+<h2 class="text-5xl font-display font-bold text-accent-blue dark:text-white mb-8 leading-[1.1]">The Story of Seven Decades.</h2>
+<div class="relative perspective-1000 mb-8">
+<div class="card-3d bg-white dark:bg-zinc-800 p-8 rounded-[2rem] border border-black/5 relative overflow-hidden">
+<span class="material-symbols-outlined absolute -top-4 -right-4 text-9xl text-slate-100 dark:text-zinc-700/30 opacity-50">format_quote</span>
+<p class="font-display italic text-2xl text-accent-blue dark:text-slate-200 leading-relaxed relative z-10">
+                        "Every sunrise since 1957 has seen our ovens warm and our hearts open. We aren't just selling bread; we are continuing a conversation that my grandfather started."
+                    </p>
+</div>
+</div>
+<div class="relative perspective-1000 mb-12">
+<div class="card-3d bg-accent-blue dark:bg-zinc-900 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+<div class="relative group cursor-pointer">
+<img alt="Founders Interview Thumbnail" class="w-full h-56 object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt74pgTMAbSo-yGnYGHdhbCE9GyHnNOCrjTY2ShUZZI5zB3kyVsguTfFteXT01GneSmQ1o2IUZSCGMP-iRK8zH72oYYkZekWf0jnc-gSwWMW9vQI6oUXuaBcrpucsgTpLYDlSJfL-FEbTmzAxqwU_sSmatS3kpjCVRLbvddWL6pdN8s8gBmerRlgFy-G-cCP12eBv98zo8GDQ9PX7amSqTM_MNSLcX_L_v7_kg6sgqeyAYlkAmXIHGWg066WvsZaV_BmGO2CShRi4-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-accent-blue/80 via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<div class="w-16 h-16 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center shadow-2xl">
+<span class="material-symbols-outlined text-white text-4xl translate-x-0.5">play_arrow</span>
+</div>
+<div class="mt-4 text-center">
+<h4 class="text-white font-display font-bold text-lg">A Message from our Founders</h4>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 text-center">
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-blue/40 dark:text-white/30">Watch Full Story • 4:20 min</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-6 bg-white dark:bg-zinc-900/30" id="timeline">
+<div class="text-center mb-16">
+<h3 class="text-3xl font-display font-bold text-accent-blue dark:text-white">Heritage Timeline</h3>
+<p class="text-sm text-slate-500 mt-2">A journey of taste through time</p>
+</div>
+<div class="relative">
+<div class="absolute left-4 top-0 bottom-0 w-0.5 timeline-line rounded-full opacity-20"></div>
+<div class="relative pl-12 pb-16">
+<div class="absolute left-0 w-8 h-8 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 z-10">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+</div>
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">1957: The Beginning</span>
+<h4 class="text-xl font-display font-bold text-accent-blue dark:text-white mb-3">Pathak Bhandar is Born</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        Starting as a modest corner stall in Prayagraj, Shri Pathak Ji introduced the city to authentic, hand-crafted biscuits.
+                    </p>
+<div class="rounded-2xl overflow-hidden h-40 shadow-md">
+<img alt="1957" class="w-full h-full object-cover grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt74pgTMAbSo-yGnYGHdhbCE9GyHnNOCrjTY2ShUZZI5zB3kyVsguTfFteXT01GneSmQ1o2IUZSCGMP-iRK8zH72oYYkZekWf0jnc-gSwWMW9vQI6oUXuaBcrpucsgTpLYDlSJfL-FEbTmzAxqwU_sSmatS3kpjCVRLbvddWL6pdN8s8gBmerRlgFy-G-cCP12eBv98zo8GDQ9PX7amSqTM_MNSLcX_L_v7_kg6sgqeyAYlkAmXIHGWg066WvsZaV_BmGO2CShRi4-"/>
+</div>
+</div>
+</div>
+<div class="relative pl-12 pb-16">
+<div class="absolute left-0 w-8 h-8 bg-accent-blue rounded-xl flex items-center justify-center text-white shadow-lg z-10">
+<span class="material-symbols-outlined text-sm">potted_plant</span>
+</div>
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">1980s: Growing Roots</span>
+<h4 class="text-xl font-display font-bold text-accent-blue dark:text-white mb-3">Expanding the Menu</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        The second generation introduced modern confectionery while keeping the coal-fired ovens burning.
+                    </p>
+</div>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-0 w-8 h-8 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 z-10">
+<span class="material-symbols-outlined text-sm">home_pin</span>
+</div>
+<div>
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">Present Day</span>
+<h4 class="text-xl font-display font-bold text-accent-blue dark:text-white mb-3">The Current Generation</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Today, we serve over 20,000 families daily. We are digital, sustainable, and as authentic as the day we started.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-background-light dark:bg-zinc-950 overflow-hidden" id="owners">
+<div class="px-6 mb-10 text-center">
+<h3 class="text-3xl font-display font-bold text-accent-blue dark:text-white mb-2">Generational Legacy</h3>
+<p class="text-primary font-bold text-[10px] uppercase tracking-[0.2em]">The Custodians of Taste</p>
+</div>
+<div class="slider-snap flex overflow-x-auto no-scrollbar gap-6 px-10 pb-12 perspective-1000">
+<div class="slide-item flex-shrink-0 w-[85vw] max-w-[320px]">
+<div class="card-3d bg-white dark:bg-zinc-800 rounded-[2.5rem] overflow-hidden p-6 border border-black/5 flex flex-col h-full shadow-2xl">
+<div class="relative h-64 mb-6 rounded-2xl overflow-hidden">
+<img alt="Founders" class="w-full h-full object-cover grayscale sepia-[0.3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt74pgTMAbSo-yGnYGHdhbCE9GyHnNOCrjTY2ShUZZI5zB3kyVsguTfFteXT01GneSmQ1o2IUZSCGMP-iRK8zH72oYYkZekWf0jnc-gSwWMW9vQI6oUXuaBcrpucsgTpLYDlSJfL-FEbTmzAxqwU_sSmatS3kpjCVRLbvddWL6pdN8s8gBmerRlgFy-G-cCP12eBv98zo8GDQ9PX7amSqTM_MNSLcX_L_v7_kg6sgqeyAYlkAmXIHGWg066WvsZaV_BmGO2CShRi4-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+</div>
+<div class="mt-auto">
+<p class="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">Gen 1: 1957 — 1985</p>
+<h4 class="font-display text-2xl font-bold text-accent-blue dark:text-white mb-3">The Founders</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed italic">
+                            "Laying the foundations with coal-fired ovens and a promise of uncompromising purity."
+                        </p>
+<div class="mt-4 pt-4 border-t border-black/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">history</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400">The Roots Era</span>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-item flex-shrink-0 w-[85vw] max-w-[320px]">
+<div class="card-3d bg-white dark:bg-zinc-800 rounded-[2.5rem] overflow-hidden p-6 border border-black/5 flex flex-col h-full shadow-2xl">
+<div class="relative h-64 mb-6 rounded-2xl overflow-hidden">
+<img alt="Rajeev Pathak" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-DKyRm5cNy_qoBLKcin0TIG_RDwYFJqsFU2OaFlSKc7Q3z4g0aakLkD8GhnSQuUq7wX6lTdxfUxdYf1LvnU4dGXzq8CmS7OsY7tJ63zqS3X6Wrem3vaNbX1mxVfvnwHUcXKSw7fJDiE5Ds_KQOTpNRpzOMbHgBjK7hRQgH-kQE4JTucsDSM-F0vyQSQMVA5sO57Q72tfb7xa1B7yssJ0dJ4ZUuA4PslyjOFfY-8mqovRK6L6ksn2rk42txxJxTtFSSi6ASDIxy_u0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
+</div>
+<div class="mt-auto">
+<p class="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">Gen 2: 1985 — Present</p>
+<h4 class="font-display text-2xl font-bold text-accent-blue dark:text-white mb-3">Rajeev Pathak</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed italic">
+                            "Modernizing heritage through innovation, expanding our family to thousands of homes."
+                        </p>
+<div class="mt-4 pt-4 border-t border-black/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400">The Growth Era</span>
+</div>
+</div>
+</div>
+</div>
+<div class="slide-item flex-shrink-0 w-[85vw] max-w-[320px]">
+<div class="card-3d bg-white dark:bg-zinc-800 rounded-[2.5rem] overflow-hidden p-6 border border-black/5 flex flex-col h-full shadow-2xl">
+<div class="relative h-64 mb-6 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+<img alt="The Successor" class="w-full h-full object-cover saturate-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt74pgTMAbSo-yGnYGHdhbCE9GyHnNOCrjTY2ShUZZI5zB3kyVsguTfFteXT01GneSmQ1o2IUZSCGMP-iRK8zH72oYYkZekWf0jnc-gSwWMW9vQI6oUXuaBcrpucsgTpLYDlSJfL-FEbTmzAxqwU_sSmatS3kpjCVRLbvddWL6pdN8s8gBmerRlgFy-G-cCP12eBv98zo8GDQ9PX7amSqTM_MNSLcX_L_v7_kg6sgqeyAYlkAmXIHGWg066WvsZaV_BmGO2CShRi4-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
+</div>
+<div class="mt-auto">
+<p class="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">Gen 3: Future Vision</p>
+<h4 class="font-display text-2xl font-bold text-accent-blue dark:text-white mb-3">The Successor</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed italic">
+                            "Bridging global culinary tech with local tradition for a sustainable tomorrow."
+                        </p>
+<div class="mt-4 pt-4 border-t border-black/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">rocket_launch</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-slate-400">The Vision Era</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-2 mt-4">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+</div>
+</section>
+<section class="py-20 px-6 overflow-hidden" id="future">
+<div class="mb-10">
+<h3 class="text-3xl font-display font-bold text-accent-blue dark:text-white mb-2">Future Vision</h3>
+<p class="text-slate-500 text-sm">Building for the Next Generation</p>
+</div>
+<div class="perspective-1000">
+<div class="card-3d bg-accent-blue p-8 rounded-[2.5rem] text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6">rocket_launch</span>
+<h4 class="text-2xl font-display font-bold mb-4">The Next Chapter</h4>
+<p class="text-white/70 leading-relaxed mb-8">
+                        We are investing in zero-emissions logistics and fully biodegradable packaging, ensuring the next 60 years are as sweet for the planet.
+                    </p>
+<div class="flex items-center gap-4 py-4 border-t border-white/10">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white">eco</span>
+</div>
+<p class="text-[11px] font-bold uppercase tracking-widest">Sustainable Craftsmanship</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 px-6 bg-accent-blue/5" id="stats">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl stat-shadow text-center">
+<div class="text-3xl font-display font-bold text-primary mb-1">67+</div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Years of Trust</p>
+</div>
+<div class="bg-white dark:bg-zinc-800 p-6 rounded-3xl stat-shadow text-center">
+<div class="text-3xl font-display font-bold text-accent-blue dark:text-white mb-1">50k+</div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Happy Smiles</p>
+</div>
+</div>
+</section>
+<section class="py-20 px-6" id="contact">
+<div class="bg-primary/5 rounded-[3rem] p-10 text-center border border-primary/10">
+<h3 class="text-3xl font-display font-bold text-accent-blue mb-4">Be Part of Our Journey</h3>
+<button class="w-full bg-accent-blue text-white font-bold py-5 rounded-2xl shadow-xl shadow-accent-blue/30 flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                Get Directions <span class="material-symbols-outlined">near_me</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="bg-accent-blue text-white px-6 pt-16 pb-32">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center font-display text-2xl font-bold">PB</div>
+<div>
+<h4 class="font-bold text-xl">Pathak Bakers</h4>
+<p class="text-xs text-white/50">Crafting Memories Since 1957</p>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 text-center">
+<p class="text-white/40 text-[10px] mb-2 uppercase tracking-widest">© 2025 Pathak Bakers. All rights reserved.</p>
+</div>
+</footer>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-t border-black/5 flex justify-around items-center py-4 px-2 z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-bold">Search</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-bold">About</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="text-[10px] font-bold">Cart</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+
+</body></html>

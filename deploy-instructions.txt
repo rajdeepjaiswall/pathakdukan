@@ -1,0 +1,54 @@
+PATHAK BHANDAR - CPANEL DEPLOYMENT INSTRUCTIONS
+===============================================
+
+STEP 1: DOWNLOAD THESE FILES FROM YOUR PROJECT
+---------------------------------------------
+✓ app.js (main entry point)
+✓ package-cpanel.json (rename to package.json)
+✓ .env.cpanel (rename to .env and configure)
+✓ mysql-database-setup.sql (import to database)
+✓ server/ (entire folder)
+✓ client/ (entire folder)
+✓ shared/ (entire folder)
+✓ attached_assets/ (entire folder)
+✓ tailwind.config.ts
+✓ tsconfig.json
+✓ postcss.config.js
+✓ drizzle-cpanel.config.ts
+
+STEP 2: SETUP MYSQL DATABASE IN CPANEL
+--------------------------------------
+1. Login to cPanel
+2. Go to "MySQL Databases"
+3. Create database: pathak_bhandar_db
+4. Create MySQL user with password
+5. Assign user to database with ALL PRIVILEGES
+6. Go to phpMyAdmin
+7. Select your database
+8. Import "mysql-database-setup.sql" file
+
+STEP 3: CONFIGURE ENVIRONMENT
+----------------------------
+1. Rename ".env.cpanel" to ".env"
+2. Edit .env file with your details:
+
+DATABASE_URL=mysql://YOUR_MYSQL_USER:YOUR_PASSWORD@localhost:3306/YOUR_DATABASE_NAME
+SESSION_SECRET=your-secure-32-character-random-string-here
+JWT_SECRET=another-secure-32-character-random-string-here
+
+STEP 4: UPLOAD FILES TO CPANEL
+------------------------------
+1. Upload ALL files to public_html directory
+2. Rename "package-cpanel.json" to "package.json"
+3. Install dependencies (if Node.js available): npm install
+
+STEP 5: ACCESS YOUR WEBSITE
+---------------------------
+Visit your domain - the app should load automatically!
+
+IMPORTANT NOTES:
+- Make sure your hosting supports Node.js
+- Verify MySQL database permissions
+- Keep .env file secure (never share publicly)
+
+Need help? Check CPANEL-DEPLOYMENT-README.md for detailed troubleshooting.

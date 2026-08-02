@@ -1,0 +1,135 @@
+You are an AI text-to-code agent working inside an EXISTING admin dashboard + order management system.
+
+========================
+PROBLEM STATEMENT (READ CAREFULLY)
+========================
+Currently, the WhatsApp message for rider delivery details is NOT being sent,
+even though:
+- The template is approved
+- The API returns a positive response
+- The LLM reports success
+
+The REAL issue is that the trigger condition is unclear or incorrectly mapped.
+
+This prompt FIXES that.
+
+========================
+CLEAR DOMAIN EXPLANATION
+========================
+- "RIDER" = DELIVERY AGENT
+- Rider is assigned ONLY from the ADMIN DASHBOARD
+- Admin assigns rider under:
+  👉 "Assign Delivery Agent" option
+- Admin enters / updates:
+  - Delivery agent (rider) name
+  - Delivery agent (rider) phone number
+- This action happens ONLY when the order is marked
+  as "Out for Delivery"
+
+========================
+EXACT TRIGGER CONDITION (MANDATORY)
+========================
+SEND THE WHATSAPP MESSAGE ONLY WHEN ALL CONDITIONS BELOW ARE TRUE:
+
+1️⃣ Admin is on the ADMIN DASHBOARD  
+2️⃣ Admin selects an existing order  
+3️⃣ Admin opens "Assign Delivery Agent"  
+4️⃣ Admin updates or selects:
+    - Rider name
+    - Rider phone number  
+5️⃣ Admin clicks the **UPDATE / SAVE** button  
+6️⃣ Order status is "Out for Delivery"
+
+⚠️ If the admin does NOT click UPDATE → DO NOTHING  
+⚠️ If rider info is unchanged → DO NOTHING  
+⚠️ If status is not "Out for Delivery" → DO NOTHING  
+
+========================
+STRICT DO-NOT-CHANGE RULES
+========================
+- Do NOT change order status logic.
+- Do NOT change admin dashboard UI.
+- Do NOT add new database fields.
+- Do NOT refactor existing code.
+- Do NOT send SMS.
+- Do NOT affect OTP, payment, or other notifications.
+- ONLY attach WhatsApp sending AFTER successful rider update.
+
+========================
+WHATSAPP TEMPLATE DETAILS
+========================
+
+Template ID:
+10639
+
+Template Name:
+dilivery_pb
+
+HEADER:
+Pathak bhandar
+
+BODY:
+Namaste🙏 {Var1},
+Thank you for your order {Var2} is out for dilivery track you orders here
+https://pathakbhandar.in/customer/orders
+make sure you login with your own name
+Contact our rider {Var3}
+Call {Var4}
+Thank you
+
+FOOTER:
+Managed by Getdown fitness
+
+========================
+VARIABLE MAPPING (NO CONFUSION)
+========================
+- Var1 → customer.name
+- Var2 → order.id OR order.reference
+- Var3 → delivery_agent.name (rider assigned by admin)
+- Var4 → delivery_agent.phone_number (entered by admin)
+
+⚠️ Rider = Delivery Agent (same entity)
+⚠️ Use values saved by admin, not cached ones
+
+========================
+API INTEGRATION (USE AS-IS)
+========================
+
+API URL:
+https://www.fast2sms.com/dev/whatsapp
+
+REQUEST TYPE:
+GET with query parameters
+
+FULL REQUEST FORMAT:
+https://www.fast2sms.com/dev/whatsapp
+?authorization=<WHATSAPP_API_KEY_FROM_REPLIT_SECRETS>
+&message_id=10639
+&phone_number_id=979454055241619
+&numbers=<CUSTOMER_MOBILE_NUMBER>
+&variables_values=Var1|Var2|Var3|Var4
+
+========================
+IMPLEMENTATION FIX (IMPORTANT)
+========================
+- Attach WhatsApp API call AFTER:
+  ✔ Rider info is saved successfully in DB
+  ✔ Admin update action returns success
+- DO NOT trigger on page load
+- DO NOT trigger on dropdown selection
+- DO NOT trigger on status change alone
+- Trigger ONLY on successful UPDATE action
+
+========================
+EXPECTED RESULT (VERIFIABLE)
+========================
+- Admin clicks UPDATE after assigning rider
+- System saves rider name + phone
+- Immediately after save:
+  → WhatsApp message is sent to customer
+- Customer receives rider name and phone
+- Message is sent ONCE per update
+
+If WhatsApp is triggered without admin clicking UPDATE, implementation is WRONG.
+If SMS is sent, implementation is WRONG.
+If rider info is missing, ABORT sending.

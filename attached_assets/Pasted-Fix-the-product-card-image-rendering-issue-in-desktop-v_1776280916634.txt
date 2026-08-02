@@ -1,0 +1,144 @@
+Fix the product card image rendering issue in desktop view only for the Pathak Bhandar bakery website, while keeping the mobile experience completely unchanged.
+
+Problem
+
+In desktop view:
+
+- Product images are not filling the card properly
+- There is empty space below images
+- Images look compressed or incorrectly scaled
+- Aspect ratio is not maintained visually
+- Cards look broken and unbalanced
+
+Mobile view is working perfectly — do NOT modify mobile behavior.
+
+---
+
+Objective
+
+Fix the image display so that:
+
+- Images fully fill the card area
+- No empty space is visible
+- Images look premium and properly scaled
+- Maintain smooth interaction
+- Improve product name visibility
+
+---
+
+Image Behavior (Desktop Only)
+
+Default State
+
+- Image should fill the entire container
+- Use a zoomed-in cover style
+- No blank space
+- Maintain visual balance
+
+Use:
+
+- object-fit: cover
+- width: 100%
+- height: 100%
+
+---
+
+Hover Interaction (Important)
+
+When user hovers on image:
+
+- Image should zoom out slightly
+- Reveal more of original image
+- Stay inside the card frame
+- Maintain aspect ratio visually
+
+Effect:
+
+- Default: slightly zoomed-in
+- Hover: zoom-out to natural framing
+
+---
+
+Implementation Logic
+
+Wrap image inside a container:
+
+- Fixed aspect ratio (4:3 for desktop)
+- Overflow hidden
+
+Image behavior:
+
+- Default scale: 1.1 (zoomed in)
+- On hover: scale to 1.0
+
+Add smooth transition:
+
+- 0.4s ease animation
+- No sudden jumps
+
+---
+
+Example Behavior Summary
+
+Default:
+
+- Image fills card
+- Slight zoom-in
+- No empty space
+
+On Hover:
+
+- Smooth zoom-out
+- Shows full composition
+- Still clean and contained
+
+---
+
+Typography Fix (Product Name)
+
+Improve product name readability:
+
+- Increase font size slightly
+- Make it semi-bold or bold
+- Improve spacing
+
+Desktop:
+
+- Font size: 16px–18px
+- Font weight: 600
+
+Ensure:
+
+- Clear hierarchy
+- Easy to scan
+
+---
+
+Constraints
+
+- Do NOT modify mobile layout
+- Do NOT break card structure
+- Do NOT stretch images unnaturally
+- Keep performance optimized
+- Keep bakery aesthetic intact
+
+---
+
+Final Expected Result
+
+Desktop cards should:
+
+- Look clean and premium
+- Have properly filled images
+- No blank spaces
+- Smooth hover animation
+- Better readable product names
+
+Mobile view should remain:
+
+- Exactly the same
+- Fully intact
+
+---
+
+This fix should ONLY improve desktop image rendering and typography without affecting any other part of the UI.

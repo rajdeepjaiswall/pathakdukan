@@ -1,0 +1,211 @@
+Create a fully dynamic and editable Legal Pages Management System for both Privacy Policy and Terms of Service, integrated into the existing admin dashboard and frontend website.
+
+---
+
+🧩 ADMIN DASHBOARD CHANGES
+
+1. Add two new sections in the admin dashboard sidebar:
+   
+   - Privacy Policy
+   - Terms of Service
+
+2. Each section should open a dedicated Editor Page, similar to the "About Us Editor".
+
+---
+
+🔁 EXISTING CONTENT MIGRATION (VERY IMPORTANT)
+
+- Whatever content is currently written on:
+  - "/privacy-policy"
+  - "/terms-of-service"
+
+👉 MUST be:
+
+- Fetched
+- Structured
+- And made fully editable inside the admin dashboard editor
+
+⚠️ Do NOT remove or lose existing content
+⚠️ Convert existing static content into structured editable blocks
+
+---
+
+🧱 CONTENT BLOCK SYSTEM
+
+The editor must support structured modular content blocks:
+
+Each block supports:
+
+- Heading (H1 / H2 style)
+- Subheading (optional)
+- Paragraph text (rich text / multi-line)
+- Bullet points / numbered lists (optional)
+
+---
+
+Block Controls:
+
+Each block must allow:
+
+- Add Block
+- Reorder blocks (drag & drop or arrows)
+- Delete block
+- Toggle visibility (ON/OFF)
+
+---
+
+📝 CONTENT STRUCTURE REQUIREMENT
+
+- Follow same hierarchy as:
+  - About Us page
+  - Standard legal documents
+
+Example:
+
+- Section Heading
+- Subheading
+- Paragraph
+- Bullet points
+
+---
+
+🎨 DESIGN CONSISTENCY
+
+Maintain EXACT same typography and style:
+
+- Headings → Newsreader
+- Body → Plus Jakarta Sans
+- Same spacing, colors, and layout system as About Us
+
+---
+
+🕒 LAST UPDATED SYSTEM
+
+1. Add a "Last Updated Date" field:
+   
+   - Automatically update when admin clicks Save
+   - Store in database
+
+2. Display on frontend (top of page):
+
+Example:
+"Last Updated: March 12, 2026"
+
+---
+
+🔄 LIVE SYNC BEHAVIOR
+
+- Any changes made in admin dashboard must:
+  - Instantly reflect on:
+    - "/privacy-policy"
+    - "/terms-of-service"
+
+---
+
+Rendering Rules:
+
+- If block is:
+  - Empty ❌
+  - OR toggled OFF ❌
+
+👉 Then DO NOT render it on frontend
+
+---
+
+🌐 FRONTEND IMPLEMENTATION
+
+Create two dynamic pages:
+
+- "/privacy-policy"
+- "/terms-of-service"
+
+---
+
+Layout:
+
+1. Title (Page Heading)
+2. "Last Updated" date
+3. Dynamic content sections
+
+---
+
+Styling Rules:
+
+- Centered reading container
+- Proper spacing between sections
+- Clean typography
+- Bullet points styled clearly
+- Fully responsive
+
+---
+
+🧠 DATA STRUCTURE
+
+Store content as:
+
+{
+page_type: "privacy_policy" | "terms",
+last_updated: timestamp,
+sections: [
+{
+id,
+heading,
+subheading,
+content,
+list_items: [],
+is_active: true,
+order_index
+}
+]
+}
+
+---
+
+⚙️ FUNCTIONAL REQUIREMENTS
+
+- Save → updates DB + last_updated
+- Preview → shows live version
+- Add Block → creates new section
+- Toggle → show/hide section
+- Reorder → controls display sequence
+
+---
+
+🔒 SAFETY RULES (STRICT)
+
+- DO NOT modify:
+  
+  - Authentication system
+  - Navbar
+  - Footer
+  - Existing theme/colors
+  - About Us system
+
+- DO NOT hardcode content
+
+- ALL content must be dynamic and admin-controlled
+
+---
+
+🎯 GOAL
+
+Create a fully CMS-driven legal page system where:
+
+- Existing content becomes editable
+- Admin has full control over structure and content
+- Frontend updates instantly
+- UI remains premium and consistent
+
+---
+
+🚀 SCALABILITY
+
+Ensure system supports adding more pages in future like:
+
+- Refund Policy
+- Shipping Policy
+- Disclaimer
+
+---
+
+End of task.

@@ -1,0 +1,135 @@
+REFERENCE IMAGE:
+Use the attached screenshot as the visual reference for layout, spacing, typography, card structure, order status styling, and overall UI consistency. Do not redesign or modify any existing functionality, styling, navigation, database logic, API connections, or layouts outside the scope defined below.
+
+TASK:
+Update only the "Orders" section by introducing two logical categories inside the existing Orders page:
+
+1. Upcoming Orders
+2. Past Orders
+
+ORDER CLASSIFICATION LOGIC
+
+Upcoming Orders:
+- Any order that is Pending, Processing, Packed, Shipped, Out for Delivery, or any status other than Delivered.
+- These orders remain under the "Upcoming Orders" heading.
+
+Past Orders:
+- Any order marked as Delivered from the Admin → Orders panel.
+- Once an order status becomes Delivered, automatically move it from Upcoming Orders to Past Orders.
+- Preserve all existing order data, date, order number, amount, address, status, etc.
+- Only the section heading changes from Upcoming Orders to Past Orders.
+
+PAST ORDER CARD MODIFICATIONS
+
+For Delivered Orders only:
+
+REMOVE:
+- Cancellation related text.
+- Rejection charge message.
+- Cancel button.
+- Any inactive progress-related action buttons.
+- Any order-management actions no longer relevant after delivery.
+
+KEEP:
+- Order number.
+- Delivery date.
+- Amount.
+- Delivery status badge.
+- Customer details.
+- Existing card design and styling.
+
+ADD PRODUCT REVIEW SYSTEM
+
+Inside every Delivered Order card:
+
+1. Display product thumbnails for all purchased products.
+2. Clicking a product opens a review interface for that specific product.
+3. Review form contains:
+   - 5-star rating selector.
+   - Review text field.
+   - Maximum 200 characters.
+   - Submit Review button.
+
+SUBMISSION FLOW
+
+After successful submission:
+
+Display:
+✓ Your review has been submitted
+
+Success styling:
+- Green confirmation badge.
+- Smooth success animation if available.
+
+RATING VISUAL STATES
+
+5-Star / Positive Review:
+- Green review badge.
+
+4-Star Review:
+- Light Green badge.
+
+3-Star Review:
+- Yellow badge.
+
+2-Star Review:
+- Orange badge.
+
+1-Star Review:
+- Red badge.
+
+MULTIPLE PRODUCT HANDLING
+
+If order contains 4 or fewer products:
+- Show all product thumbnails directly.
+
+If order contains more than 4 products:
+- Show first 4 products.
+- Show a "View All Products" row with a small dropdown arrow.
+- Clicking expands all ordered products.
+- Every product should have:
+   - Rating option.
+   - Write Review option.
+
+TESTIMONIAL INTEGRATION
+
+Current testimonial module already exists.
+
+When a review is submitted:
+
+1. Save review against the product.
+2. Send review into Testimonials → Pending Approval.
+3. Admin can:
+   - Approve review.
+   - Reject review.
+   - Manage review visibility.
+
+Only approved reviews appear publicly in Testimonials.
+
+Do NOT auto-publish reviews.
+
+DATABASE REQUIREMENTS
+
+- Link review to:
+  - User ID
+  - Product ID
+  - Order ID
+  - Rating
+  - Review Text
+  - Submission Date
+
+- Prevent duplicate reviews for the same product within the same order unless review editing is intentionally enabled elsewhere.
+
+IMPORTANT RESTRICTIONS
+
+DO NOT:
+- Modify navigation.
+- Modify checkout flow.
+- Modify admin order logic except Delivered → Past Order classification.
+- Modify cart functionality.
+- Modify product pages.
+- Modify existing testimonials workflow.
+- Change existing UI styling outside the Orders section.
+- Change database structure unrelated to reviews and order categorization.
+
+Only implement the order categorization and delivered-order review workflow while preserving the current UI/UX consistency shown in the reference image.

@@ -1,0 +1,317 @@
+You are working on an existing mobile-first bakery delivery website called "Pathak Bhandar".
+
+Your task is NOT just UI changes, but FULL IMPLEMENTATION including:
+
+- UI Layout
+- Backend logic
+- Admin Dashboard controls
+- Product tagging system
+- Dynamic rendering
+
+IMPORTANT:
+Do not break existing UI.
+Do not redesign hero, header, categories, or bottom navigation.
+
+Only rearrange and add dynamic sections.
+
+--------------------------------------------
+
+FINAL HOMEPAGE STRUCTURE
+
+1. Top Navigation (Existing — No Change)
+
+2. Hero Carousel (Existing — No Change)
+
+3. Categories Section (Existing — No Change)
+
+4. Slim Banner (Admin Controlled)
+
+5. Cart Reminder Section
+
+6. Trending in Prayagraj Section
+
+7. Featured Products Section
+
+8. Slim Banner (Admin Controlled)
+
+9. Product of the Day Section
+
+10. Recently Purchased Section
+
+11. Chef Editorial Section
+
+12. Testimonials
+
+13. Bottom Navigation
+
+--------------------------------------------
+
+ADMIN DASHBOARD IMPLEMENTATION
+
+Modify Product Schema
+
+Add the following fields:
+
+Product Model:
+
+{
+  id: string
+  name: string
+  price: number
+  image: string
+  category: string
+
+  isLive: boolean
+  isFeatured: boolean
+  isTrending: boolean
+  isProductOfDay: boolean
+  isChefSpecial: boolean
+
+  createdAt: timestamp
+}
+
+--------------------------------------------
+
+ADMIN PANEL UI CONTROLS
+
+Inside Admin Product Editor
+
+Add checkboxes:
+
+[ ] Live Product  
+[ ] Featured Product  
+[ ] Trending in Prayagraj  
+[ ] Product of the Day  
+[ ] Chef Special  
+
+--------------------------------------------
+
+SECTION LOGIC
+
+Trending in Prayagraj
+
+Backend Query:
+
+Fetch products where:
+
+isLive = true  
+AND isTrending = true
+
+Limit: 6 Products
+
+Display in masonry layout
+
+--------------------------------------------
+
+Featured Products Section
+
+Logic:
+
+Fetch products where:
+
+isLive = true
+
+Sort by:
+
+isFeatured first  
+Then latest created
+
+Display:
+
+All live products
+
+--------------------------------------------
+
+Product of the Day
+
+Logic:
+
+Fetch:
+
+isProductOfDay = true  
+AND isLive = true
+
+Limit:
+
+Only 1 product
+
+If multiple selected:
+
+Take latest
+
+--------------------------------------------
+
+Chef Editorial Section
+
+Logic:
+
+Fetch:
+
+isChefSpecial = true  
+AND isLive = true
+
+Limit:
+
+2 Products
+
+--------------------------------------------
+
+Recently Purchased Section
+
+Logic:
+
+User specific
+
+Fetch:
+
+user.orders
+
+Get last purchased products
+
+Display:
+
+Horizontal scroll
+
+--------------------------------------------
+
+Cart Reminder Section
+
+Logic:
+
+If cart.length > 0
+
+Display:
+
+Cart reminder card
+
+Else:
+
+Hide section
+
+--------------------------------------------
+
+Slim Banner Section
+
+Create new table:
+
+banners
+
+Banner Schema:
+
+{
+  id: string
+  title: string
+  subtitle: string
+  image: string
+  isActive: boolean
+  order: number
+}
+
+Admin Dashboard:
+
+Banner Editor
+
+Admin can:
+
+Add Banner  
+Remove Banner  
+Enable / Disable  
+
+Homepage Query:
+
+Fetch:
+
+isActive = true
+
+Display:
+
+Between sections
+
+--------------------------------------------
+
+FRONTEND IMPLEMENTATION
+
+Use existing Tailwind UI styling
+
+Do not change:
+
+Typography  
+Spacing  
+Rounded UI  
+Color palette
+
+--------------------------------------------
+
+RENDER ORDER LOGIC
+
+Homepage render function:
+
+Render:
+
+Header
+
+Hero
+
+Categories
+
+Banner 1
+
+Cart Reminder (if cart exists)
+
+Trending in Prayagraj
+
+Featured Products
+
+Banner 2
+
+Product of the Day
+
+Recently Purchased
+
+Chef Section
+
+Testimonials
+
+Bottom Navigation
+
+--------------------------------------------
+
+PERFORMANCE OPTIMIZATION
+
+Lazy load:
+
+Trending section
+
+Featured products
+
+Chef section
+
+--------------------------------------------
+
+MOBILE FIRST RULE
+
+All sections:
+
+Scrollable  
+Responsive  
+Rounded cards  
+Soft shadow
+
+--------------------------------------------
+
+FINAL OUTPUT
+
+Implement:
+
+Frontend UI  
+Backend Schema  
+Admin Dashboard Controls  
+Dynamic Rendering  
+
+Maintain:
+
+Existing UI  
+Mobile layout  
+Premium styling
+
+This is full-stack implementation.

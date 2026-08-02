@@ -1,0 +1,220 @@
+You are a Replit AI agent working on an existing full-stack e-commerce application with a Supabase backend.
+
+Your task is to create a fully dynamic “About Us” page and corresponding admin editing system based on the provided design code and reference image.
+
+---
+
+⚠️ CRITICAL CONSTRAINTS (STRICT)
+
+- DO NOT modify the top navigation bar (header) in any way
+- DO NOT modify the footer in any way
+- DO NOT alter any existing global styles or break current UI
+- DO NOT change existing homepage or other pages
+- ONLY build and integrate the About Us page and its admin controls
+- Maintain full backward compatibility
+
+---
+
+🎯 OBJECTIVE
+
+1. Build an “About Us” page using:
+   
+   - The provided HTML/Tailwind code as the base structure
+   - The uploaded reference image as the visual style guide
+
+2. Convert the page into a dynamic, section-based system
+
+3. Create an “About Us Editor” in the admin dashboard to control all sections
+
+---
+
+🎨 DESIGN REQUIREMENTS (MANDATORY)
+
+- Use EXACT SAME:
+  
+  - Fonts (Newsreader for headings, Plus Jakarta Sans for body)
+  - Colors (existing Tailwind config)
+  - Spacing, layout, and hierarchy
+  - Animation styles (fade-in, scroll reveal, ken-burns, etc.)
+
+- The About page must visually feel identical in style to the reference design
+
+- DO NOT introduce new design systems or styling deviations
+
+---
+
+🧩 ABOUT PAGE STRUCTURE
+
+Convert the page into modular sections such as:
+
+- Hero Section (carousel with heading + CTA)
+- Founder / Legacy Section (carousel cards)
+- Story Section (image + text layout)
+- Image Grid / Visual Section
+- Team / Culture Section (if present)
+
+Each section must be treated as an independent block.
+
+---
+
+⚙️ DYNAMIC DATA STRUCTURE (Supabase - extend safely)
+
+Create or extend a table:
+
+about_sections:
+
+- id
+- section_type (e.g., "hero", "founder", "story", "gallery", "team")
+- title
+- subtitle
+- description
+- media (array of image/video URLs)
+- cta_text (optional)
+- cta_link (optional)
+- is_active (boolean)
+- display_order (number)
+- created_at
+
+⚠️ Do not remove or overwrite existing data structures
+
+---
+
+🖥️ ADMIN DASHBOARD (About Us Editor)
+
+Create a new section:
+
+👉 “About Us Editor”
+
+---
+
+Features:
+
+1. Section List View
+
+- Display all sections
+- Show:
+  - Section type
+  - Title
+  - Media count
+  - Toggle (ON/OFF)
+  - Order control (optional drag or numeric)
+
+---
+
+2. Edit Section
+
+Each section must allow:
+
+- Title input
+- Subtitle input
+- Description (rich text or textarea)
+- Media upload (multiple images/videos)
+- CTA button (text + link)
+- Toggle ON/OFF
+
+---
+
+3. Add Section
+
+Allow admin to create new section from predefined types:
+
+- Hero
+- Founder / Legacy
+- Story
+- Image Grid
+- Team
+
+---
+
+🌐 FRONTEND RENDERING LOGIC
+
+- Fetch all sections from database
+
+- Sort by "display_order"
+
+- For each section:
+  
+  IF:
+  
+  - is_active = true
+  - AND content exists
+  
+  THEN:
+  
+  - Render section
+  
+  ELSE:
+  
+  - Do NOT render anything
+
+---
+
+🎬 SECTION RENDERING RULES
+
+Hero Section
+
+- Full screen
+- Carousel (reuse existing logic)
+- Background media (image/video)
+- Overlay + animated text
+
+---
+
+Founder Section
+
+- Card-based carousel
+- Circular images
+- Quote + title + subtitle
+
+---
+
+Story Section
+
+- Split layout (image + text)
+- Scroll reveal animations
+
+---
+
+Image Grid Section
+
+- Multi-image layout
+- Hover overlays
+
+---
+
+Team Section
+
+- Profile cards or grid layout
+
+---
+
+🔁 MEDIA HANDLING
+
+- Support both images and videos
+- Reuse existing carousel/media logic
+- No hardcoding
+
+---
+
+🛑 SAFETY RULES
+
+- DO NOT modify navbar
+- DO NOT modify footer
+- DO NOT break existing styles
+- DO NOT affect homepage or other components
+- DO NOT hardcode content
+- ALL data must be dynamic
+
+---
+
+✅ EXPECTED RESULT
+
+- Fully dynamic About Us page
+- Admin-controlled sections
+- Pixel-consistent design with provided code/image
+- Sections appear/disappear based on admin control
+- Clean, scalable architecture
+
+---
+
+End of task.

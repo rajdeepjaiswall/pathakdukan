@@ -1,0 +1,90 @@
+You are an AI text-to-code agent working inside an EXISTING OTP verification system.
+
+========================
+STRICT DO-NOT-CHANGE RULES
+========================
+- SMS OTP flow is ALREADY WORKING.
+- OTP generation already exists.
+- OTP validation already exists.
+- Two buttons already exist:
+  1) Verify via SMS (working)
+  2) Verify via WhatsApp (to be wired)
+- DO NOT create a new OTP.
+- DO NOT modify OTP logic.
+- DO NOT refactor existing code.
+- DO NOT destroy or alter any existing flow.
+- ONLY reuse the existing OTP variable.
+- API key is already stored in Replit Secrets.
+
+========================
+WHATSAPP TEMPLATE DETAILS
+========================
+
+HEADER:
+Pathak Bhandar
+
+BODY:
+Hey {Var1},
+thank you so much for joining pathak bhandar we are so glad that you are here
+here is your 6 digit offer verification code {Var2}
+make sure you use it in 15 min
+PS; Dontshare it with anyone
+Happy Snacking 🤫
+
+FOOTER:
+managed by getdown fitness
+
+BUTTON:
+Copy offer code (COPY_CODE) → {Var3}
+
+========================
+VARIABLE MAPPING (MANDATORY)
+========================
+- Var1 → user.name
+- Var2 → EXISTING OTP value
+- Var3 → SAME EXISTING OTP value (no regeneration)
+
+⚠️ Var2 and Var3 MUST use the SAME OTP variable.
+
+========================
+API INTEGRATION (USE AS-IS)
+========================
+
+API URL:
+https://www.fast2sms.com/dev/whatsapp
+
+Authorization:
+Use API key from Replit Secrets
+(do NOT hardcode the key)
+
+REQUEST FORMAT:
+GET request with query parameters
+
+FULL REQUEST STRUCTURE:
+https://www.fast2sms.com/dev/whatsapp
+?authorization=<API_KEY_FROM_REPLIT_SECRETS>
+&message_id=9780
+&phone_number_id=979454055241619
+&numbers=<MOBILE_NUMBER>
+&variables_values=Var1|Var2|Var3
+
+========================
+IMPLEMENTATION INSTRUCTIONS
+========================
+- Trigger this API ONLY when user clicks "Verify via WhatsApp".
+- Reuse the OTP already sent via SMS.
+- Inject variables in the exact order:
+  Var1 | Var2 | Var3
+- Do NOT change template text.
+- Do NOT add fallback logic.
+- Do NOT add retries.
+- Do NOT affect SMS verification.
+
+========================
+EXPECTED RESULT
+========================
+- User receives the SAME OTP on WhatsApp.
+- OTP verification continues using existing logic.
+- System behavior remains unchanged except WhatsApp delivery.
+
+If any change risks breaking existing OTP or SMS behavior, ABORT implementation.

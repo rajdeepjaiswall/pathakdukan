@@ -1,0 +1,197 @@
+Create a fully responsive desktop-optimized layout for the Pathak Bhandar bakery website while keeping the current mobile UI completely unchanged. The existing design is mobile-first and looks good on mobile devices, but when opened on desktop, the layout breaks visually due to poor aspect ratios, excessive vertical stacking, narrow cards, weak spacing, and sections not expanding properly.
+
+Your task is to fix the desktop view only without harming the mobile experience, performance, or usability.
+
+The current problems observed in desktop view include:
+
+- Product cards become too tall and narrow
+- Poor image aspect ratios
+- Uneven whitespace
+- Sections not expanding edge-to-edge
+- Weak visual hierarchy
+- Featured products stacked vertically instead of grid layout
+- Trending and featured sections not properly structured
+- New sections not expanding corner-to-corner
+
+The goal is to create a clean, premium, responsive bakery layout that maintains the existing mobile UI but intelligently adapts for larger screens.
+
+The website is a local bakery and sweets delivery store in Prayagraj with a warm bakery aesthetic, so maintain a soft brown theme, subtle shadows, and rounded cards.
+
+Use the following design goals:
+
+- Mobile UI must remain exactly unchanged
+- Desktop layout must be optimized for readability and symmetry
+- Maintain bakery themed aesthetics
+- Improve visual hierarchy
+- Fix card aspect ratio
+- Expand sections edge-to-edge
+- Improve spacing and alignment
+- Maintain performance and image quality
+
+Implement responsive breakpoints:
+
+Mobile: 0-640px
+Tablet: 641-1024px
+Desktop: 1025px and above
+
+For Desktop Layout:
+
+Create a centered container:
+
+- Max width: 1400px
+- Horizontal padding: 32px
+- Sections expand properly
+- Maintain whitespace balance
+
+Featured Products Section:
+
+In desktop view:
+
+- Show 3 cards per row
+- Equal spacing between cards
+- Symmetrical alignment
+- Use proper aspect ratio
+
+Grid layout:
+
+- 3 column layout
+- 24px gap
+- Balanced padding
+
+Card Styling:
+
+- Use aspect ratio 4:3 for desktop
+- Keep rounded corners
+- Add soft brown border for contrast
+- Add subtle hover elevation
+- Maintain image clarity
+
+Images should use:
+
+- object-fit: cover
+- Full width
+- No distortion
+
+Trending Local Section:
+
+In desktop:
+
+- Show 4 cards per row
+- Balanced grid layout
+- Equal spacing
+- Maintain card height consistency
+
+Specialties Section:
+
+Convert horizontal scroll into grid on desktop:
+
+- 5 to 6 circular items per row
+- Maintain symmetry
+- Proper spacing
+- Maintain bakery themed icons
+
+Hero Section:
+
+Expand to full width in desktop:
+
+- Left side: text and CTA
+- Right side: featured cake image
+- Balanced layout
+- Maintain responsive scaling
+
+Spacing Rules:
+
+Desktop spacing:
+
+- Section top spacing: 48px
+- Section bottom spacing: 48px
+- Card gap: 20px-24px
+
+Typography Improvements:
+
+- Section headings larger
+- Clear hierarchy
+- Improve readability
+- Maintain brand style
+
+Use warm brown tone:
+
+Primary Brown:
+#6B3E2E
+
+Accent Brown:
+#8B5E3C
+
+Background Soft:
+#F8F4F1
+
+Border Style:
+
+Use subtle brown border:
+
+- Very soft contrast
+- Maintain elegance
+
+Apply to:
+
+- Featured cards
+- Section containers
+- Highlight cards
+
+Aspect Ratio Fix:
+
+Mobile:
+
+- Maintain current ratio
+
+Desktop:
+
+- Use 4:3 aspect ratio
+- Prevent vertical stretching
+
+Ensure:
+
+- No layout shifts
+- No image quality loss
+- No mobile break
+
+Performance Requirements:
+
+- Lazy load images
+- Responsive images
+- No heavy rendering
+- Maintain fast load speed
+
+Final Expected Result:
+
+Desktop view should:
+
+- Look premium
+- Be visually balanced
+- Have proper card aspect ratio
+- Expand sections edge-to-edge
+- Maintain bakery theme
+- Improve readability
+- Improve conversion friendliness
+
+Mobile view must:
+
+- Remain unchanged
+- Maintain layout integrity
+- Maintain performance
+
+Important:
+
+Do not redesign the entire UI.
+Only optimize responsiveness and desktop layout behavior.
+
+The final output should look:
+
+- Clean
+- Professional
+- Balanced
+- Attractive
+- Readable
+- Conversion friendly
+
+Apply all improvements using responsive CSS, flex/grid layouts, and maintain consistent design hierarchy across the entire website.

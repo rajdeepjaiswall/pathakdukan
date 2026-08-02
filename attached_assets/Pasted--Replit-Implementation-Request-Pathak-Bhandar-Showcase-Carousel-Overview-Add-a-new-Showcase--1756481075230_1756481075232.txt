@@ -1,0 +1,67 @@
+# Replit Implementation Request: Pathak Bhandar Showcase Carousel
+
+## Overview
+Add a new **Showcase** section to the existing Pathak Bhandar website. The page already includes: top status bar, navigation, greeting message, a scrollable banner, and a specialty section. The **Showcase** comes **below** these and presents a horizontally scrollable carousel of **A4-format posters** displayed as **dark cards**. Users can click/tap a poster to view it **full-screen**; a **double-tap** (or explicit action) should open the linked **product page**.
+
+---
+
+## Goals
+1. Visually highlight promotions and featured products via posters.  
+2. Enable quick product deep-links from posters.  
+3. Provide an admin workflow to manage posters from the existing dashboard.  
+
+---
+
+## User Experience (UX)
+
+### Showcase Section (Customer-facing)
+- **Layout**  
+  - Horizontal scrollable list of posters with touch + mouse support.  
+  - A4 aspect ratio maintained (`aspect-ratio: 1 / 1.414`).  
+  - Displayed as **dark, rounded cards** with subtle shadows.  
+
+- **Interactions**  
+  - **Single click/tap:** Full-screen modal view (auto close after 10s or on close action).  
+  - **Double-click/tap:** Opens the linked **product page**.  
+  - **Autoplay:** Automatically scrolls every 10s (pauses if user interacts or tab inactive).  
+  - **Keyboard support:** Left/right arrows to navigate, `Enter` for full screen, `Esc` to close modal.  
+
+- **Full-Screen Modal**  
+  - Edge-to-edge poster with background dim.  
+  - Close button + swipe down to exit (mobile).  
+  - Optional toolbar: Poster title + “View Product” button.  
+
+- **Performance**  
+  - Lazy-load offscreen images.  
+  - Use multiple resolutions (srcset) and WebP/AVIF fallbacks.  
+  - Maintain A4 ratio with CSS.  
+
+---
+
+## Admin & Dashboard (Owner-facing)
+- Side panel navigation: **Banner Management** + **Showcase**.  
+- CRUD features for posters:  
+  - Title, Image Upload, Product Link/ID, Caption, Order, Visibility, Schedule.  
+  - Preview posters on desktop & mobile.  
+  - Bulk hide/show/reorder/delete.  
+
+- Validation:  
+  - Enforce A4 ratio ±5%.  
+  - Require product link when visible.  
+
+---
+
+## Data Model (Poster)
+```json
+{
+  "id": "uuid",
+  "title": "Diwali Specials",
+  "imageUrl": "/media/showcase/diwali.webp",
+  "productUrl": "/products/brass-lamp",
+  "productId": "SKU-12345",
+  "caption": "Up to 30% off on festive decor",
+  "order": 3,
+  "visible": true,
+  "startAt": "2025-10-15T00:00:00Z",
+  "endAt": "2025-11-20T00:00:00Z"
+}

@@ -1,0 +1,69 @@
+═══════════════════════════════════════════
+  Pathak Bhandar — R2 Migration
+  Started: 2026-03-27T22:02:01.552Z
+═══════════════════════════════════════════
+
+═══ STEP 1: Create backup columns ═══
+  ✓ Backed up: products=53, banners=5, payment_config=1
+
+═══ STEP 2: Migrate products.images ═══
+  Found 11 product(s) with base64 images
+  ✓ Product 69 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/69-1774648923189.jpg
+  ✓ Product 69 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/69-1774648924054.jpg
+  ✓ Product 69 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/69-1774648924910.jpg
+  ✓ Product 69 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/69-1774648925901.jpg
+  ✓ Product 70 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/70-1774648926919.jpg
+  ✓ Product 70 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/70-1774648927944.jpg
+  ✓ Product 70 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/70-1774648929058.jpg
+  ✓ Product 70 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/70-1774648929982.jpg
+  ✓ Product 71 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/71-1774648931891.jpg
+  ✓ Product 71 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/71-1774648932735.jpg
+  ✓ Product 71 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/71-1774648934818.jpg
+  ✓ Product 71 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/71-1774648936076.jpg
+  ✓ Product 72 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/72-1774648936950.jpg
+  ✓ Product 72 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/72-1774648938198.jpg
+  ✓ Product 72 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/72-1774648940387.jpg
+  ✓ Product 72 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/72-1774648941529.jpg
+  ✓ Product 73 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/73-1774648942482.jpg
+  ✓ Product 73 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/73-1774648943581.jpg
+  ✓ Product 73 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/73-1774648945165.jpg
+  ✓ Product 73 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/73-1774648946340.jpg
+  ✓ Product 74 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/74-1774648947251.jpg
+  ✓ Product 74 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/74-1774648948306.jpg
+  ✓ Product 74 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/74-1774648949211.jpg
+  ✓ Product 74 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/74-1774648950326.jpg
+  ✓ Product 75 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/75-1774648951430.jpg
+  ✓ Product 75 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/75-1774648952282.jpg
+  ✓ Product 75 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/75-1774648953142.jpg
+  ✓ Product 75 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/75-1774648954072.jpg
+  ✓ Product 76 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/76-1774648954975.jpg
+  ✓ Product 76 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/76-1774648957170.jpg
+  ✓ Product 76 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/76-1774648958092.jpg
+  ✓ Product 76 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/76-1774648959203.jpg
+  ✓ Product 77 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/77-1774648960164.jpg
+  ✓ Product 77 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/77-1774648961563.jpg
+  ✓ Product 77 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/77-1774648963109.jpg
+  ✓ Product 77 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/77-1774648964120.jpg
+  ✓ Product 78 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/78-1774648966496.jpg
+  ✓ Product 78 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/78-1774648967748.jpg
+  ✓ Product 78 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/78-1774648968905.jpg
+  ✓ Product 78 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/78-1774648969920.jpg
+  ✓ Product 90 image → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/products/images/90-1774648970885.jpg
+
+═══ STEP 3: Migrate banners.video_url ═══
+  Found 2 banner(s) with base64 video
+  ✓ Banner 12 video → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/banners/videos/12-1774648972432.mp4
+  ✓ Banner 14 video → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/banners/videos/14-1774648975705.mp4
+
+═══ STEP 4: Migrate manual_payment_config.qr_image_url ═══
+  Found 1 QR row(s) with base64 image
+  ✓ Payment config 1 QR → https://pub-d90142ad48a24e7fa34c843dd4c9e960.r2.dev/misc/qr/1-1774648977557.jpg
+
+═══ STEP 5: Verification ═══
+  ✓ products.images base64 remaining: 0 — CLEAN
+  ✓ banners.video_url base64 remaining: 0 — CLEAN
+  ✓ manual_payment_config.qr_image_url base64 remaining: 0 — CLEAN
+
+═══════════════════════════════════════════
+  ✓ Success: 44   ✗ Failed: 0   ⊘ Skipped: 0
+═══════════════════════════════════════════

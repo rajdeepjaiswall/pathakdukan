@@ -1,0 +1,111 @@
+You are an AI text-to-code agent working inside an EXISTING order management system.
+
+========================
+TRIGGER CONDITION (VERY IMPORTANT)
+========================
+This WhatsApp message MUST be sent ONLY when:
+✅ Admin selects a rider
+✅ Admin updates rider name and rider phone number
+✅ Admin saves/updates the order in the admin dashboard
+
+❌ Do NOT trigger on order creation
+❌ Do NOT trigger on order status change alone
+❌ Do NOT trigger on customer actions
+❌ Do NOT send SMS
+
+========================
+STRICT DO-NOT-CHANGE RULES
+========================
+- Order flow is already working.
+- Rider assignment logic already exists.
+- Admin dashboard already exists.
+- Customer and order data already exists.
+- DO NOT modify database schema.
+- DO NOT refactor existing logic.
+- DO NOT introduce new events.
+- ONLY hook into the existing admin rider-update action.
+- SEND ONLY WhatsApp message (NO SMS).
+
+========================
+WHATSAPP KEY & API HANDLING
+========================
+- WhatsApp API key is ALREADY stored in Replit Secrets.
+- Use ONLY the WhatsApp API key.
+- DO NOT use SMS API key.
+- DO NOT hardcode credentials.
+
+========================
+WHATSAPP TEMPLATE DETAILS
+========================
+
+Template ID:
+10639
+
+Template Name:
+dilivery_pb
+
+HEADER:
+Pathak bhandar
+
+BODY:
+Namaste🙏 {Var1},
+Thank you for your order {Var2} is out for dilivery track you orders here
+https://pathakbhandar.in/customer/orders
+make sure you login with your own name
+Contact our rider {Var3}
+Call {Var4}
+Thank you
+
+FOOTER:
+Managed by Getdown fitness
+
+========================
+VARIABLE MAPPING (MANDATORY)
+========================
+- Var1 → customer.name
+- Var2 → order.id OR order.reference
+- Var3 → rider.name (selected by admin)
+- Var4 → rider.phone_number (selected by admin)
+
+⚠️ Use existing values only.
+⚠️ Do NOT generate or transform data.
+
+========================
+API INTEGRATION (USE AS-IS)
+========================
+
+API URL:
+https://www.fast2sms.com/dev/whatsapp
+
+REQUEST TYPE:
+GET request with query parameters
+
+FULL REQUEST FORMAT:
+https://www.fast2sms.com/dev/whatsapp
+?authorization=<WHATSAPP_API_KEY_FROM_REPLIT_SECRETS>
+&message_id=10639
+&phone_number_id=979454055241619
+&numbers=<CUSTOMER_MOBILE_NUMBER>
+&variables_values=Var1|Var2|Var3|Var4
+
+========================
+IMPLEMENTATION INSTRUCTIONS
+========================
+- Hook into the admin dashboard action where rider info is saved.
+- After successful rider update:
+  → Trigger WhatsApp API call once.
+- Variable order MUST be EXACT:
+  Var1 | Var2 | Var3 | Var4
+- Do NOT send duplicate messages.
+- Do NOT retry automatically.
+- Do NOT alter template text, emojis, spacing, or links.
+
+========================
+EXPECTED RESULT
+========================
+- Customer receives ONE WhatsApp message with rider details.
+- Message is sent ONLY after admin assigns rider.
+- No SMS is sent.
+- No impact on OTP, payment, or other notifications.
+
+If any existing system behavior is affected, ABORT implementation immediately.
